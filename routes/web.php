@@ -33,11 +33,15 @@ Route::post('/presence/check', [PresenceController::class, 'checkPresence'])->na
 
 // User Route
 
-Route::get('/user', function() {
+Route::get('/user/home', function() {
     return view('user.home', [
         "title" => "home"
     ]);
 })->name('home');
+
+Route::get('/user/profile', function() {
+    return view('user.profile');
+});
 
 Route::get('/user/recap', [PresenceController::class, 'recapPresence'])->name('recap_presence');
 
