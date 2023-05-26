@@ -60,7 +60,7 @@
 </div>
 
 <div class="mt-8">
-    
+    <h3 class="text-gray-700 text-3xl font-medium capitalize">rekap absenmu</h3>
 </div>
 
 <div class="flex flex-col mt-8">
@@ -96,8 +96,11 @@
                             <div class="text-sm leading-5 text-gray-900">Software Engineer</div>
                         </td>
 
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                        <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
+                            <div class="flex flex-col gap-2">
+                                <div class="text-sm leading-5 text-gray-900"><i class="fa-solid fa-right-to-bracket bg-green-500 text-white p-[3px]"></i> {{ now()->format('d-m-Y') }}</div>
+                                <div class="text-sm leading-5 text-gray-900"><i class="fa-solid fa-right-to-bracket bg-red-500 text-white p-[3px]"></i> Tanggal Logout</div>
+                            </div>
                         </td>
 
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
@@ -105,7 +108,7 @@
                         </td>
 
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 font-medium">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                            <a href="#" class="text-red-500 hover:text-red-700 text-2xl"><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
                 </tbody>
