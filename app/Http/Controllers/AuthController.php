@@ -39,6 +39,28 @@ class AuthController extends Controller
                 return Redirect::route('home');
         } else
             return Redirect::route('login');
+        if (Auth::attempt($data)) {
+            $user = Auth::user();
+            $presence = Presence::where('user_id', $user->id)->first();
+            $check_in = Presence::whereNull('check_in');
+            $check_out = Presence::whereNull('check_out');
+            
+            return view('user.home', compact('presence', 'check_in', 'check_out'));
+        }
+        
+        // if (Auth::attempt($data)) {
+        //     $user = Auth::user();
+        //     $value = Presence::where('user_id', $user->id)->where('date', now()->format('Y-m-d'))->whereNull('check_in')->first();
+        //     if($value)
+        //     {
+        //         $hasil = 'benar';
+        //         return  view('user.home', compact('hasil'));
+        //     }
+        //     $hasil = 'salah';
+        //     return  view('user.home', compact('hasil'));
+        // }
+        
+        return Redirect::route('home');
     }
 
     public function register()

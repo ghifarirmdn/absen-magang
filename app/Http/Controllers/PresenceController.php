@@ -58,14 +58,13 @@ class PresenceController extends Controller
                 file_put_contents($path, $data);
             }
             $presence->save();
-            return Redirect::route('/home');
+            return Redirect::route('home');
         } elseif ($presence->check_out == '') {
             $presence->update([
                 $presence->check_out = $time
             ]);
-            return Redirect::route('login');
-        } else
             return Redirect::route('home');
+        } 
     }
 
     public function recapPresence()

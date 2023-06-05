@@ -1,6 +1,24 @@
 @extends('layouts.main')
 @section('container')
-<h3 class="text-gray-700 text-3xl font-medium capitalize">Hai <span class="text-orange-400">{{ Auth::user()->name }}</span></h3>
+
+<div class="flex justify-between">
+    <h3 class="text-gray-700 text-3xl font-medium capitalize">Hai <span class="text-orange-400">{{ Auth::user()->name }}</span></h3>
+    <div class="button-absen flex gap-2">
+        {{-- @if($check_in)
+            <button type="button" onclick="location.href='{{ url('/presence') }}'" class="bg-green-500 rounded-md text-white p-2 hover:bg-green-700 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-200">Masuk</button>
+        @elseif($check_out)
+            <button type="button" onclick="location.href='{{ url('/presence') }}'" class="bg-red-500 rounded-md text-white p-2 hover:bg-red-700 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-200">Keluar</button>
+        @endif --}}
+        <button type="button" onclick="location.href='{{ url('/presence') }}'" class="bg-gray-500 rounded-md text-white p-2 hover:bg-green-700 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-200">
+            @if($check_in)
+                Masuk
+            @else
+                Keluar
+            @endif
+        </button>
+    </div>
+</div>
+
 
 <div class="mt-4">
     <div class="flex flex-wrap -mx-6">
@@ -69,46 +87,17 @@
             <table class="min-w-full">
                 <thead>
                     <tr>
-                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Nama</th>
-                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">IP Address</th>
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Presensi</th>
-                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Foto</th>
-                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                     </tr>
                 </thead>
 
                 <tbody class="bg-white">
                     <tr>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                            <div class="flex items-center">
-                                <div class="flex-shrink-0 h-10 w-10">
-                                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                                </div>
-
-                                <div class="ml-4">
-                                    <div class="text-sm leading-5 font-medium text-gray-900 capitalize">{{ Auth::user()->name }}</div>
-                                    <div class="text-sm leading-5 text-gray-500">{{ Auth::user()->email }}</div>
-                                </div>
-                            </div>
-                        </td>
-                        
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                            <div class="text-sm leading-5 text-gray-900">Software Engineer</div>
-                        </td>
-
                         <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
-                            <div class="flex flex-col gap-2">
-                                <div class="text-sm leading-5 text-gray-900"><i class="fa-solid fa-right-to-bracket bg-green-500 text-white p-[3px]"></i> {{ now()->format('d-m-Y') }}</div>
+                            <div class="flex gap-2 justify-between">
+                                <div class="text-sm leading-5 text-gray-900"><i class="fa-solid fa-right-to-bracket bg-green-500 text-white p-[3px]"></i>Tanggal Absen Masuk</div>
                                 <div class="text-sm leading-5 text-gray-900"><i class="fa-solid fa-right-to-bracket bg-red-500 text-white p-[3px]"></i> Tanggal Logout</div>
                             </div>
-                        </td>
-
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900">View Here</a>
-                        </td>
-
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 font-medium">
-                            <a href="#" class="text-red-500 hover:text-red-700 text-2xl"><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
                 </tbody>
