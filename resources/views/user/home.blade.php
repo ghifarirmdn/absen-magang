@@ -10,11 +10,7 @@
             <button type="button" onclick="location.href='{{ url('/presence') }}'" class="bg-red-500 rounded-md text-white p-2 hover:bg-red-700 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-200">Keluar</button>
         @endif --}}
         <button type="button" onclick="location.href='{{ url('/presence') }}'" class="bg-gray-500 rounded-md text-white p-2 hover:bg-green-700 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-200">
-            @if($check_in)
-                Masuk
-            @else
-                Keluar
-            @endif
+            Press Me !
         </button>
     </div>
 </div>

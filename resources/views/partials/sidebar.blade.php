@@ -45,7 +45,7 @@
             <span class="mx-3">Forms</span>
         </a>
 
-        <a class="flex items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" href="{{ route('logOut') }}">
+        <a class="flex items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" href="{{ route('logout') }}">
             <i class="fa-solid fa-right-from-bracket"></i><span class="mx-3">Logout</span>
         </a>
     </nav>
