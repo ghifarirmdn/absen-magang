@@ -27,5 +27,11 @@ Route::post('/register', [AuthController::class, 'store'])->name('store');
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// User Route
+// Home Route
 Route::get('/home', [HomeController::class, 'home'])->name('home');
+
+// Presence route
+Route::get('/presence', [PresenceController::class, 'create'])->name('create_presence');
+Route::post('/presence/{user}', [PresenceController::class, 'store'])->name('store_presence');
+Route::get('/presence/{user}/out', [PresenceController::class, 'add'])->name('add_presence');
+Route::patch('/presence/{user}/out', [PresenceController::class, 'update'])->name('update_presence');
