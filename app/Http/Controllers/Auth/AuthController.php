@@ -52,7 +52,7 @@ class AuthController extends Controller
         ]);
 
         return redirect()->route('login')
-            ->withSuccess('You have successfully registered & logged in!');
+            ->withSuccess('You have successfully registered!');
     }
 
     /**

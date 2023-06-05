@@ -28,4 +28,4 @@ Route::post('/register', [AuthController::class, 'store'])->name('store');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // User Route
-Route::get('/user/home', [HomeController::class, 'home'])->name('home');
+Route::get('/home', [HomeController::class, 'home'])->name('home');
