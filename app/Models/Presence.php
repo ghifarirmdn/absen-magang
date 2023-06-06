@@ -13,8 +13,11 @@ class Presence extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
+        'date',
         'in',
-        'out'
+        'out', 
+        'status'
     ];
 
     public function user()

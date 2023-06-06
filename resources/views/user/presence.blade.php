@@ -73,15 +73,6 @@
                     console.log("Something went wrong: " + error);
                 });
         }
-
-        // function takePhoto() {
-        //     canvas.width = video.videoWidth;
-        //     canvas.height = video.videoHeight;
-        //     context.drawImage(video, 0, 0, canvas.width, canvas.height);
-        //     var photo = canvas.toDataURL("image/png");
-        //     document.querySelector("#photo-preview").src = photo;
-        //     document.querySelector("#photo-input").value = photo;
-        // }
     </script>
 </body>
 
