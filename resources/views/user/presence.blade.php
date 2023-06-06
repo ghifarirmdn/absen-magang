@@ -20,7 +20,7 @@
                 <p><i class="fa-solid fa-right-to-bracket bg-green-500 text-white p-[3px]"></i> {{ now()->format('d-m-Y') }}</p>
                 <p><i class="fa-solid fa-right-to-bracket bg-red-500 text-white p-[3px]"></i> Tanggal Logout</p>
             </div>
-            <form class="space-y-4" action="{{ route('check_presence') }}" method="POST"  content-type="multipart/form-data">
+            <form class="space-y-4" action="{{ route('store_presence', $presence) }}" method="POST"  content-type="multipart/form-data">
                 @csrf
                 <div class="w-full">
                     <label for="status" class="block text-sm font-medium leading-6 text-gray-900 sm:text-base md:text-lg">Status</label>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PresenceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,6 @@ Route::get('/home', [HomeController::class, 'home'])->name('home');
 
 // Presence route
 Route::get('/presence', [PresenceController::class, 'create'])->name('create_presence');
-Route::post('/presence/{user}', [PresenceController::class, 'store'])->name('store_presence');
+Route::post('/presence', [PresenceController::class, 'store'])->name('store_presence');
 Route::get('/presence/{user}/out', [PresenceController::class, 'add'])->name('add_presence');
 Route::patch('/presence/{user}/out', [PresenceController::class, 'update'])->name('update_presence');
