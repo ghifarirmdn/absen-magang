@@ -21,9 +21,10 @@ trait TakePhoto
             $filename = Str::random(10) . '_' . time() . '.' . $type;
             $path = public_path() . '/img/' . $filename;
             $presence->photo = 'img/' . $filename;
-            file_put_contents($path, $data);
+            
+            return file_put_contents($path, $data);
 
-            return Session::flash('message', 'Foto berhasil disimpan!');
+            // return Session::flash('message', 'Foto berhasil disimpan!');
         }else{
             Session::flash('message', 'Foto gagal disimpan!');
             Session::flash('alert-class', 'alert-danger');
