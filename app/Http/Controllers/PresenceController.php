@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use DateTime;
 use DateTimeZone;
+
 use App\Models\User;
-
 use App\Models\Presence;
-use Illuminate\Support\Str;
+use App\Http\Traits\TakePhoto;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -33,6 +34,7 @@ class PresenceController extends Controller
         $date = $date_time->format('Y-m-d');
         $time = $date_time->format('H:i:s');
 
+    
         //MASUKAN dalam TRAITS
 
         // $photo = $request->photo;
