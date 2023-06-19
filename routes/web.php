@@ -33,6 +33,6 @@ Route::get('/home', [HomeController::class, 'home'])->name('home');
 
 // Presence route
 Route::get('/presence', [PresenceController::class, 'create'])->name('create_presence');
-Route::post('/presence', [PresenceController::class, 'store'])->name('store_presence');
-Route::get('/presence/{user}/out', [PresenceController::class, 'add'])->name('add_presence');
-Route::patch('/presence/{user}/out', [PresenceController::class, 'update'])->name('update_presence');
+Route::post('/presence', [PresenceController::class, 'edit'])->name('edit_presence');
+Route::post('/presence/in', [PresenceController::class, 'store'])->name('store_presence');
+Route::patch('/presence/out', [PresenceController::class, 'update'])->name('update_presence');

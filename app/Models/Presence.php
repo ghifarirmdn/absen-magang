@@ -17,7 +17,8 @@ class Presence extends Model
         'date',
         'in',
         'out', 
-        'status'
+        'status', 
+        'photo'
     ];
 
     public function user()

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Presence;
 trait TakePhoto
 {
-    public function takePicture(Presence $presence, $photo)
+    public function takePicture($photo)
     {        
         if ($photo) {
             list($type, $data) = explode(';', $photo);
@@ -20,11 +20,13 @@ trait TakePhoto
 
             $filename = Str::random(10) . '_' . time() . '.' . $type;
             $path = public_path() . '/img/' . $filename;
-            $presence->photo = 'img/' . $filename;
-            
-            return file_put_contents($path, $data);
+            $photo = 'img/' . $filename;
+            file_put_contents($path, $data);
 
-            // return Session::flash('message', 'Foto berhasil disimpan!');
+            Session::flash('message', 'Foto berhasil disimpan!');
+            Session::flash('alert-class', 'alert-success');
+            
+            return $photo;
         }else{
             Session::flash('message', 'Foto gagal disimpan!');
             Session::flash('alert-class', 'alert-danger');
