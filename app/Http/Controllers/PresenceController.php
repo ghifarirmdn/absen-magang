@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Session;
 class PresenceController extends Controller
 {
     use TakePhoto;
-
+    
     public function create()
     {
         $presence = Presence::where('user_id', Auth::id())->first();
