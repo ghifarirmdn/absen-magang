@@ -20,8 +20,8 @@
             </div>
             <div class="flex justify-between mt-3">
                 <p><i class="fa-solid fa-right-to-bracket bg-green-500 text-white p-[3px]"></i>
-                    {{ now()->format('d-m-Y') }}</p>
-                <p><i class="fa-solid fa-right-to-bracket bg-red-500 text-white p-[3px]"></i> Tanggal Logout</p>
+                    {{ now()->format('H:m:i') }}</p>
+                <p><i class="fa-solid fa-right-to-bracket bg-red-500 text-white p-[3px]"></i>-</p>
             </div>
             <form class="space-y-4" action="{{ route('store_presence', $presence) }}" method="POST"
                 content-type="multipart/form-data">

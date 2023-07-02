@@ -20,8 +20,8 @@
             </div>
             <div class="flex justify-between mt-3">
                 <p><i class="fa-solid fa-right-to-bracket bg-green-500 text-white p-[3px]"></i>
-                    {{ now()->format('d-m-Y') }}</p>
-                <p><i class="fa-solid fa-right-to-bracket bg-red-500 text-white p-[3px]"></i> Tanggal Logout</p>
+                    {{ $presence->check_in }}</p>
+                <p><i class="fa-solid fa-right-to-bracket bg-red-500 text-white p-[3px]"></i>{{ now()->format('H:m:i') }}</p>
             </div>
             <form class="space-y-4" action="{{ route('update_presence', $presence) }}" method="POST"
                 content-type="multipart/form-data">
@@ -32,9 +32,7 @@
                         class="block text-sm font-medium leading-6 text-gray-900 sm:text-base md:text-lg">Status</label>
                     <select name="status"
                         class="w-full rounded-md border  bg-white ring-gray-300 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                        <option selected>Status</option>
-                        <option value="WFH">WFH</option>
-                        <option value="WFO">WFO</option>
+                        <option selected>{{ $presence->status }}</option>
                     </select>
                 </div>
                 <div class="video flex flex-col items-center gap-3">

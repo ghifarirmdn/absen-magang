@@ -4,18 +4,17 @@
         <h3 class="text-gray-700 text-3xl font-medium capitalize">Hai <span
                 class="text-orange-400">{{ Auth::user()->name }}</span></h3>
         <div class="button-absen flex gap-2">
-            @if (!isset($check_in))
+            @if (!isset($presence->in))
                 <button type="button" onclick="location.href='{{ route('create_presence') }}'"
                     class="bg-green-500 rounded-md text-white p-2 hover:bg-green-700 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-200">Masuk</button>
-            {{-- @elseif(!isset($check_out))
-                <button type="button" onclick="location.href='{{ route('edit_presence') }}'"
-                    class="bg-red-500 rounded-md text-white p-2 hover:bg-red-700 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-200">Keluar</button> --}}
+            @elseif(!isset($presence->out))
+                <button type="button" onclick="location.href='{{ route('edit_presence', $presence) }}'"
+                    class="bg-red-500 rounded-md text-white p-2 hover:bg-red-700 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-200">Keluar</button>
             @else
                 <button class="bg-gray-500 rounded-md text-white p-2 disabled">
                     Presence Completed
                 </button>
             @endif
-
         </div>
     </div>
 
@@ -122,11 +121,11 @@
                             <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
                                 <div class="flex gap-2 justify-between">
                                     <div class="text-sm leading-5 text-gray-900"><i
-                                            class="fa-solid fa-right-to-bracket bg-green-500 text-white p-[3px]"></i>Tanggal
-                                        Absen Masuk</div>
+                                            class="fa-solid fa-right-to-bracket bg-green-500 text-white p-[3px]"></i>{{ $presence->in ?? 'Belum ada presensi' }}
+                                    </div>
                                     <div class="text-sm leading-5 text-gray-900"><i
-                                            class="fa-solid fa-right-to-bracket bg-red-500 text-white p-[3px]"></i> Tanggal
-                                        Logout</div>
+                                            class="fa-solid fa-right-to-bracket bg-red-500 text-white p-[3px]"></i>
+                                        {{ $presence->out ?? 'Belum ada presensi' }}</div>
                                 </div>
                             </td>
                         </tr>
