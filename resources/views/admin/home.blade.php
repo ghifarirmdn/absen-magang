@@ -51,7 +51,7 @@
                                         {{ date('d-m-Y', strtotime($presence->date)) }}
                                     </td>
                                     <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="grid grid-rows-2 gap-2">
+                                        <div class="grid grid-rows-2 gap-1">
                                             <div class="text-sm leading-5 text-gray-800">
                                                 <i class="fa-solid fa-right-to-bracket rounded bg-green-500 text-white p-[3px]"></i>
                                                 {{ $presence->in }}
