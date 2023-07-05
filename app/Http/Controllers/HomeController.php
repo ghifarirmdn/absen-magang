@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 use App\Models\Presence;
+use App\Models\User;
 
 class HomeController extends Controller
 {

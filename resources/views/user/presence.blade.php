@@ -15,15 +15,15 @@
                 </select>
             </div>
             <div class="video flex flex-col items-center gap-3">
-                <video id="video" autoplay class="rounded-md w-3/4 h-48 border border-sky-400"></video>
+                <video id="video" autoplay class="rounded-md w-3/4 h-48 border border-grey-400"></video>
                 <input type="text" name="photo" id="photo-input" hidden></input>
-                <img id="photo-preview" width="320" height="240" class="rounded-md w-3/4 h-48 border border-sky-400">
-                <button type="button" id="takePhoto" class="bg-green-500 px-3 py-1.5 text-white rounded-md"><i
-                        class="fa-solid fa-camera"></i>Take Photo</button>
+                <img id="photo-preview" width="320" height="240" class="rounded-md w-3/4 h-48 border border-grey-400">
+                <button type="button" id="takePhoto" class="bg-gray-700 px-3 py-1.5 text-white rounded-md"><i
+                        class="fa-solid fa-camera fa-xl"></i></button>
             </div>
             <div class="flex justify-center">
                 <button type="submit"
-                    class="flex w-full justify-center rounded-md bg-orange-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 md:w-1/2 md:h-10 md:items-center lg:h-12 lg:text-lg 2xl:w-1/2">Submit</button>
+                    class="flex w-full justify-center rounded-md bg-green-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 md:w-1/2 md:h-10 md:items-center lg:h-12 lg:text-lg 2xl:w-1/2">Submit</button>
             </div>
         </form>
     @else
@@ -41,15 +41,15 @@
                 </select>
             </div>
             <div class="video flex flex-col items-center gap-3">
-                <video id="video" autoplay class="rounded-md w-3/4 h-48 border border-sky-400"></video>
+                <video id="video" autoplay class="rounded-md w-3/4 h-48 border border-grey-400"></video>
                 <input type="text" name="photo" id="photo-input" hidden></input>
-                <img id="photo-preview" width="320" height="240" class="rounded-md w-3/4 h-48 border border-sky-400">
-                <button type="button" id="takePhoto" class="bg-green-500 px-3 py-1.5 text-white rounded-md"><i
-                        class="fa-solid fa-camera"></i>Take Photo</button>
+                <img id="photo-preview" width="320" height="240" class="rounded-md w-3/4 h-48 border border-grey-400">
+                <button type="button" id="takePhoto" class="bg-gray-700 px-3 py-1.5 text-white rounded-md"><i
+                        class="fa-solid fa-camera fa-xl"></i></button>
             </div>
             <div class="flex justify-center">
                 <button type="submit"
-                    class="flex w-full justify-center rounded-md bg-orange-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 md:w-1/2 md:h-10 md:items-center lg:h-12 lg:text-lg 2xl:w-1/2">Submit</button>
+                    class="flex w-full justify-center rounded-md bg-green-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 md:w-1/2 md:h-10 md:items-center lg:h-12 lg:text-lg 2xl:w-1/2">Submit</button>
             </div>
         </form>
     @endif

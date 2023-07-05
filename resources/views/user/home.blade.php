@@ -145,7 +145,7 @@
                                                 {{ $presence->in }}
                                             </div>
                                             <div class="text-sm leading-5 text-gray-900">
-                                                <i class="fa-solid fa-right-to-bracket bg-red-500 text-white p-[3px]"></i>
+                                                <i class="fa-solid fa-right-from-bracket bg-red-500 text-white p-[3px]"></i>
                                                 {{ $presence->out }}
                                             </div>
                                         </div>

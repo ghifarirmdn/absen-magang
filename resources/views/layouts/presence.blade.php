@@ -22,18 +22,24 @@
             <div class="flex justify-center mt-2">
                 <img src="{{ asset('image/profile.png') }}" alt="" class="w-24 h-24">
             </div>
-            <div class="flex justify-between mt-3">
-                @if (!isset($presence->in))
-                    <p><i class="fa-solid fa-right-to-bracket bg-green-500 text-white p-[3px]"></i>
-                        {{ now()->format('H:i:s') }}</p>
-                    <p><i class="fa-solid fa-right-to-bracket bg-red-500 text-white p-[3px]"></i>-</p>
-                @else
-                    <p><i class="fa-solid fa-right-to-bracket bg-green-500 text-white p-[3px]"></i>
-                        {{ $presence->in }}</p>
-                    <p><i
-                            class="fa-solid fa-right-to-bracket bg-red-500 text-white p-[3px]"></i>{{ now()->format('H:i:s') }}
-                    </p>
-                @endif
+            <div class="flex p-2 justify-between mt-3">
+                <div class="col">
+                    <h5 class="font-bold">Email</h5>
+                    <p>{{ Auth::user()->email }}</p>
+                </div>
+                <div class="grid gap-y-1 grid-cols-1">
+                    @if (!isset($presence->in))
+                        <p><i class="fa-solid fa-right-to-bracket bg-green-500 text-white rounded p-[3px]"></i>
+                            {{ now()->format('H:i:s') }}</p>
+                        <p><i class="ffa-solid fa-right-from-bracket bg-red-500 text-white rounded p-[3px]"></i>-</p>
+                    @else
+                        <p><i class="fa-solid fa-right-to-bracket bg-green-500 text-white rounded p-[3px]"></i>
+                            {{ $presence->in }}</p>
+                        <p><i
+                                class="fa-solid fa-right-from-bracket bg-red-500 text-white rounded p-[3px]"></i> {{ now()->format('H:i:s') }}
+                        </p>
+                    @endif
+                </div>
             </div>
 
             @yield('content')
