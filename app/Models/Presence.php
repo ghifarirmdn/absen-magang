@@ -16,8 +16,9 @@ class Presence extends Model
         'user_id',
         'date',
         'in',
-        'out', 
-        'status', 
+        'out',
+        'total_hours',
+        'status',
         'photo'
     ];
 

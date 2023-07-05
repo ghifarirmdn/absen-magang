@@ -8,11 +8,9 @@ use DateTimeZone;
 use App\Models\User;
 use App\Models\Presence;
 use App\Traits\TakePhoto;
-
-use Illuminate\Support\Str;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 
 class PresenceController extends Controller
 {
@@ -20,9 +18,7 @@ class PresenceController extends Controller
 
     public function create()
     {
-        $presence = Presence::where('user_id', Auth::id())
-            ->where('date', now()->date)
-            ->first();
+        $presence = Presence::where('user_id', Auth::id())->first();
 
         return view('user.presence', compact('presence'));
     }
@@ -60,9 +56,16 @@ class PresenceController extends Controller
         $timezone = 'Asia/Jakarta';
         $date_time = new DateTime('now', new DateTimeZone($timezone));
         $time = $date_time->format('H:i:s');
+        $start = $presence->in;
+
+        $break_1 = Carbon::createFromFormat('H:i:s', $start);
+        $break_2 = Carbon::createFromFormat('H:i:s', $time);
+
+        $total_hours = $break_2->diffInHours($break_1);
 
         $presence->update([
-            'out' => $time
+            'out' => $time,
+            'total_hours' => $total_hours
         ]);
 
         return redirect()->route('home');

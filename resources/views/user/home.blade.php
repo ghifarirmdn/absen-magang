@@ -1,21 +1,8 @@
 @extends('layouts.main')
 @section('container')
-    <div class="flex justify-between">
+    <div class="row">
         <h3 class="text-gray-700 text-3xl font-medium capitalize">Hai <span
                 class="text-orange-400">{{ Auth::user()->name }}</span></h3>
-        <div class="button-absen flex gap-2">
-            @if (!isset($presence->in))
-                <button type="button" onclick="location.href='{{ route('create_presence') }}'"
-                    class="bg-green-500 rounded-md text-white p-2 hover:bg-green-700 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-200">Masuk</button>
-            @elseif(!isset($presence->out))
-                <button type="button" onclick="location.href='{{ route('edit_presence', $presence) }}'"
-                    class="bg-red-500 rounded-md text-white p-2 hover:bg-red-700 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-200">Keluar</button>
-            @else
-                <button class="bg-gray-500 rounded-md text-white p-2 disabled">
-                    Presence Completed
-                </button>
-            @endif
-        </div>
     </div>
 
 
@@ -24,8 +11,7 @@
             <div class="w-full px-6 sm:w-1/2 xl:w-1/3">
                 <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
                     <div class="p-3 rounded-full bg-indigo-600 bg-opacity-75">
-                        <svg class="h-8 w-8 text-white" viewBox="0 0 28 30" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
+                        <svg class="h-8 w-8 text-white" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M18.2 9.08889C18.2 11.5373 16.3196 13.5222 14 13.5222C11.6804 13.5222 9.79999 11.5373 9.79999 9.08889C9.79999 6.64043 11.6804 4.65556 14 4.65556C16.3196 4.65556 18.2 6.64043 18.2 9.08889Z"
                                 fill="currentColor" />
@@ -100,8 +86,21 @@
         </div>
     </div>
 
-    <div class="mt-8">
-        <h3 class="text-gray-700 text-3xl font-medium capitalize">rekap absenmu</h3>
+    <div class="mt-8 flex justify-between">
+        <h3 class="text-gray-700 text-3xl font-medium capitalize">Rekap Presensi</h3>
+        <div class="button-absen flex gap-2">
+            @if (!isset($presence_today->in))
+                <button type="button" onclick="location.href='{{ route('create_presence') }}'"
+                    class="bg-green-500 rounded-md text-white p-2 hover:bg-green-700 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-200">Masuk</button>
+            @elseif(!isset($presence_today->out))
+                <button type="button" onclick="location.href='{{ route('edit_presence', $presence_today) }}'"
+                    class="bg-red-500 rounded-md text-white p-2 hover:bg-red-700 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-200">Keluar</button>
+            @else
+                <button class="bg-gray-500 rounded-md text-white p-2 disabled">
+                    Presence Completed
+                </button>
+            @endif
+        </div>
     </div>
 
     <div class="flex flex-col mt-8">
@@ -112,23 +111,60 @@
                         <tr>
                             <th
                                 class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                Presensi</th>
+                                #
+                            </th>
+                            <th
+                                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                Date
+                            </th>
+                            <th
+                                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                Presence
+                            </th>
+                            <th
+                                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                Total Hours
+                            </th>
                         </tr>
                     </thead>
 
                     <tbody class="bg-white">
-                        <tr>
-                            <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
-                                <div class="flex gap-2 justify-between">
-                                    <div class="text-sm leading-5 text-gray-900"><i
-                                            class="fa-solid fa-right-to-bracket bg-green-500 text-white p-[3px]"></i>{{ $presence->in ?? 'Belum ada presensi' }}
-                                    </div>
-                                    <div class="text-sm leading-5 text-gray-900"><i
-                                            class="fa-solid fa-right-to-bracket bg-red-500 text-white p-[3px]"></i>
-                                        {{ $presence->out ?? 'Belum ada presensi' }}</div>
-                                </div>
-                            </td>
-                        </tr>
+                        @if (isset($presences))
+                            @foreach ($presences as $presence)
+                                <tr>
+                                    <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
+                                        {{ $loop->iteration }}
+                                    </td>
+                                    <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
+                                        {{ date('d-m-Y', strtotime($presence->date)) }}
+                                    </td>
+                                    <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
+                                        <div class="grid grid-rows-2 gap-2">
+                                            <div class="text-sm leading-5 text-gray-900">
+                                                <i class="fa-solid fa-right-to-bracket bg-green-500 text-white p-[3px]"></i>
+                                                {{ $presence->in }}
+                                            </div>
+                                            <div class="text-sm leading-5 text-gray-900">
+                                                <i class="fa-solid fa-right-to-bracket bg-red-500 text-white p-[3px]"></i>
+                                                {{ $presence->out }}
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
+                                        <div class="text-sm leading-5 text-gray-900">
+                                            {{ $presence->total_hours }}
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="4"
+                                    class="col-span-4 px-6 py-2 whitespace-no-wrap border-b border-gray-200 text-center text-gray-400">
+                                    Data belum ada
+                                </td>
+                            </tr>
+                        @endif
                     </tbody>
                 </table>
             </div>

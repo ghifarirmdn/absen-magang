@@ -12,7 +12,35 @@
 
 <body class="bg-[#EDF2F7]">
 
-    @yield('content')
+    <div
+        class="flex flex-col justify-center h-full sm:mt-32 sm:flex sm:items-center md:flex md:items-center lg:flex lg:items-center xl:flex xl:items-center 2xl:flex 2xl:items-center">
+        <div class="bg-white rounded-xl p-5 sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/3 2xl:w-1/3">
+            <h4 class="font-bold text-center">Halo <span
+                    class="text-orange-400 capitalize">{{ Auth::user()->name }}</span>,
+                Silahkan Melakukan Presensi</h4>
+            <hr class="w-full mt-2">
+            <div class="flex justify-center mt-2">
+                <img src="{{ asset('image/profile.png') }}" alt="" class="w-24 h-24">
+            </div>
+            <div class="flex justify-between mt-3">
+                @if (!isset($presence->in))
+                    <p><i class="fa-solid fa-right-to-bracket bg-green-500 text-white p-[3px]"></i>
+                        {{ now()->format('H:i:s') }}</p>
+                    <p><i class="fa-solid fa-right-to-bracket bg-red-500 text-white p-[3px]"></i>-</p>
+                @else
+                    <p><i class="fa-solid fa-right-to-bracket bg-green-500 text-white p-[3px]"></i>
+                        {{ $presence->in }}</p>
+                    <p><i
+                            class="fa-solid fa-right-to-bracket bg-red-500 text-white p-[3px]"></i>{{ now()->format('H:i:s') }}
+                    </p>
+                @endif
+            </div>
+
+            @yield('content')
+
+        </div>
+    </div>
+
 
     <script src="https://kit.fontawesome.com/06b851ab81.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"
