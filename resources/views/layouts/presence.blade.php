@@ -13,7 +13,7 @@
 <body class="bg-[#EDF2F7]">
 
     <div
-        class="flex flex-col justify-center h-full sm:mt-32 sm:flex sm:items-center md:flex md:items-center lg:flex lg:items-center xl:flex xl:items-center 2xl:flex 2xl:items-center">
+        class="flex flex-col justify-center h-full my-5 sm:flex sm:items-center md:flex md:items-center lg:flex lg:items-center xl:flex xl:items-center 2xl:flex 2xl:items-center">
         <div class="bg-white rounded-xl p-5 sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/3 2xl:w-1/3">
             <h4 class="font-bold text-center">Halo <span
                     class="text-orange-400 capitalize">{{ Auth::user()->name }}</span>,
