@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PresenceController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +37,6 @@ Route::get('/presence', [PresenceController::class, 'create'])->name('create_pre
 Route::post('/presence', [PresenceController::class, 'store'])->name('store_presence');
 Route::get('/presence/{presence}/edit', [PresenceController::class, 'edit'])->name('edit_presence');
 Route::patch('/presence/{presence}/update', [PresenceController::class, 'update'])->name('update_presence');
+
+// Users Route
+Route::get('/users', [UserController::class, 'index'])->name('users');

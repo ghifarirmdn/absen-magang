@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.admin')
 @section('container')
     <div class="row">
         <h3 class="text-gray-700 text-3xl font-medium capitalize">Hai <span
@@ -6,7 +6,7 @@
     </div>
 
 
-    <div class="mt-4">
+    {{-- <div class="mt-4">
         <div class="flex flex-wrap -mx-6">
             <div class="w-full px-6 sm:w-1/2 xl:w-1/3">
                 <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
@@ -84,11 +84,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
-    <div class="mt-8 flex justify-between">
-        <h3 class="text-gray-700 text-3xl font-medium capitalize">Rekap Presensi</h3>
-        <div class="button-absen flex gap-2">
+    <div class="mt-8 flex justify-between items-center">
+        <h6 class="text-gray-800 font-medium capitalize">Lakukan presensi disini</h6>
+        <div class="grid grid-flow-row">
             @if (!isset($presence_today->in))
                 <button type="button" onclick="location.href='{{ route('create_presence') }}'"
                     class="bg-green-500 rounded-md text-white p-2 hover:bg-green-700 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-200">Masuk</button>
@@ -141,18 +141,18 @@
                                     <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
                                         <div class="grid grid-rows-2 gap-2">
                                             <div class="text-sm leading-5 text-gray-900">
-                                                <i class="fa-solid fa-right-to-bracket bg-green-500 text-white p-[3px]"></i>
+                                                <i class="fa-solid fa-right-to-bracket bg-green-500 text-white rounded p-[3px]"></i>
                                                 {{ $presence->in }}
                                             </div>
                                             <div class="text-sm leading-5 text-gray-900">
-                                                <i class="fa-solid fa-right-from-bracket bg-red-500 text-white p-[3px]"></i>
+                                                <i class="fa-solid fa-right-from-bracket bg-red-500 text-white rounded p-[3px]"></i>
                                                 {{ $presence->out }}
                                             </div>
                                         </div>
                                     </td>
                                     <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
                                         <div class="text-sm leading-5 text-gray-900">
-                                            {{ $presence->total_hours }}
+                                            {{ $presence->total_hours }} Hours
                                         </div>
                                     </td>
                                 </tr>

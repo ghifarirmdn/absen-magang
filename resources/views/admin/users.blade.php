@@ -2,8 +2,8 @@
 
 @section('container')
     <div class="row">
-        <h3 class="text-gray-700 text-3xl font-medium capitalize">Halo, <span
-                class="text-orange-400">{{ Auth::user()->name }}</span></h3>
+        <h3 class="text-gray-700 text-3xl font-medium capitalize"><span
+                class="text-orange-400">Data Users</span></h3>
     </div>
 
     <div class="flex flex-col mt-8">
@@ -22,49 +22,35 @@
                             </th>
                             <th
                                 class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                Date
+                                Email
                             </th>
                             <th
                                 class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                Presence
-                            </th>
-                            <th
-                                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                Total Hours
+                                Status
                             </th>
                         </tr>
                     </thead>
 
                     <tbody class="bg-white">
-                        @if (isset($presences))
-                            @foreach ($presences as $presence)
+                        @if (isset($users))
+                            @foreach ($users as $user)
                                 <tr>
                                     <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
                                         {{ $loop->iteration }}
                                     </td>
                                     <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
                                         <div class="text-sm leading-5 text-gray-900">
-                                            {{ $presence->user->name }}
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
-                                        {{ date('d-m-Y', strtotime($presence->date)) }}
-                                    </td>
-                                    <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="grid grid-rows-2 gap-1">
-                                            <div class="text-sm leading-5 text-gray-800">
-                                                <i class="fa-solid fa-right-to-bracket rounded bg-green-500 text-white p-[3px]"></i>
-                                                {{ $presence->in }}
-                                            </div>
-                                            <div class="text-sm leading-5 text-gray-800">
-                                                <i class="fa-solid fa-right-from-bracket rounded bg-red-500 text-white p-[3px]"></i>
-                                                {{ $presence->out }}
-                                            </div>
+                                            {{ $user->name }}
                                         </div>
                                     </td>
                                     <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
                                         <div class="text-sm leading-5 text-gray-900">
-                                            {{ $presence->total_hours }} Hours
+                                            {{ $user->email }}
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
+                                        <div class="text-sm leading-5 text-gray-900">
+                                            {{-- {{ $user->is_admin }} --}}Internship
                                         </div>
                                     </td>
                                 </tr>
