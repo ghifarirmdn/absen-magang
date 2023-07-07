@@ -1,24 +1,18 @@
-<!doctype html>
-<html>
+@extends('layouts.auth')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    @vite('resources/css/app.css')
-</head>
+@section('title', 'Login')
 
-<body class="bg-gray-50">
+@section('content')
     <div
-        class="flex min-h-full mt-40 flex-col justify-center my-20 sm:mt-52 sm:flex sm:items-center md:flex md:items-center lg:flex lg:items-center xl:flex xl:items-center 2xl:flex 2xl:items-center">
+        class="flex min-h-full flex-col justify-center my-12 sm:flex sm:items-center md:flex md:items-center lg:flex lg:items-center xl:flex xl:items-center 2xl:flex 2xl:items-center">
         <div class="flex flex-col items-center sm:flex-row sm:justify-center sm:gap-5  sm:mx-auto sm:w-full ">
-            <img class="h-10 w-auto md:w-12 md:h-12" src="image/otak kanan.jpg" alt="Your Company">
+            <img class="h-10 w-auto md:w-12 md:h-12" src="image/otak-kanan-logo.png" alt="Your Company">
             <h2 class="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 sm:text-2xl md:text-4xl">
-                Otak Kanan Group</h2>
+                Otak <span class="text-orange-400">Kanan</span> Group</h2>
         </div>
 
         <div class="mt-10 bg-white rounded-xl p-5 sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/3 2xl:w-1/3">
-            <form class="space-y-6" action="{{ route('action_login') }}" method="POST">
+            <form class="space-y-6" action="{{ route('authenticate') }}" method="POST">
                 @csrf
                 <div class="sm:flex sm:flex-col sm:gap-2">
                     <label for="email"
@@ -48,12 +42,10 @@
             </form>
 
             <p class="mt-10 text-center text-sm text-gray-500 md:text-base">
-                Gapunya Akun?
-                <a href="/register" class="font-semibold leading-6 text-orange-400 hover:text-orange-500">Monggo
-                    Daftar</a>
+                Belum punya Akun?
+                <a href="/register" class="font-semibold leading-6 text-orange-400 hover:text-orange-500">
+                    Daftar disini</a>
             </p>
         </div>
     </div>
-</body>
-
-</html>
+@endsection

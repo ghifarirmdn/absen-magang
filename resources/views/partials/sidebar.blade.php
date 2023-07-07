@@ -1,6 +1,8 @@
-<div x-cloak :class="sidebarOpen ? 'block' : 'hidden'" @click="sidebarOpen = false" class="fixed inset-0 z-20 transition-opacity bg-black opacity-50 lg:hidden"></div>
-    
-<div x-cloak :class="sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'" class="fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition duration-300 transform bg-gray-900 lg:translate-x-0 lg:static lg:inset-0">
+<div x-cloak :class="sidebarOpen ? 'block' : 'hidden'" @click="sidebarOpen = false"
+    class="fixed inset-0 z-20 transition-opacity bg-black opacity-50 lg:hidden"></div>
+
+<div x-cloak :class="sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'"
+    class="fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition duration-300 transform bg-gray-900 lg:translate-x-0 lg:static lg:inset-0">
     <div class="flex items-center justify-center mt-8">
         <div class="flex items-center">
             <img src="../image/logo.png" alt="logo otak kanan" width="50" height="50">
@@ -9,11 +11,19 @@
     </div>
 
     <nav class="mt-10">
-        <a href="/user/home" class="flex items-center px-6 py-2 mt-4 hover:bg-gray-700 hover:bg-opacity-25 {{ Request::routeIs('/user') ? 'bg-orange-400' : 'text-gray-100' }}">
+        <a href="{{ route('home') }}"
+            class="flex items-center px-6 py-2 mt-4 hover:bg-gray-700 hover:text-gray-100 hover:bg-opacity-25 {{ request()->is('home*') ? 'text-white bg-gray-700' : 'text-gray-500' }}">
             <i class="fa-solid fa-house"></i><span class="mx-3">Home</span>
         </a>
 
-        <a class="flex items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" href="/user/recap">
+        @if (Auth::user()->is_admin)
+            <a class="flex items-center px-6 py-2 mt-4 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100 {{ request()->is('users*') ? 'text-white bg-gray-700' : 'text-gray-500' }}"
+                href="{{ route('users') }}">
+                <i class="fa-solid fa-users"></i><span class="mx-3">Users</span>
+            </a>
+        @endif
+
+        {{-- <a class="flex items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" href="/user/recap">
             <i class="fa-solid fa-calendar-days"></i><span class="mx-3">Rekab Absensi</span>
         </a>
 
@@ -43,9 +53,10 @@
             </svg>
 
             <span class="mx-3">Forms</span>
-        </a>
+        </a> --}}
 
-        <a class="flex items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" href="{{ route('logOut') }}">
+        <a class="flex items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
+            href="{{ route('logout') }}">
             <i class="fa-solid fa-right-from-bracket"></i><span class="mx-3">Logout</span>
         </a>
     </nav>

@@ -2,89 +2,72 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Str;
+use DateTime;
 use DateTimeZone;
 
 use App\Models\User;
 use App\Models\Presence;
-use DateTime;
+use App\Traits\TakePhoto;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PresenceController extends Controller
 {
-    public function presence()
-    {
-        $user = Auth::user();
+    use TakePhoto;
 
-        return view('user.presence', compact('user'));
+    public function create()
+    {
+        $presence = Presence::where('user_id', Auth::id())->first();
+
+        return view('user.presence', compact('presence'));
     }
 
-    public function checkPresence(Request $req)
+    public function store(Request $request)
     {
+        $user = User::where('id', Auth::id())->first();
+
         $timezone = 'Asia/Jakarta';
         $date_time = new DateTime('now', new DateTimeZone($timezone));
         $date = $date_time->format('Y-m-d');
         $time = $date_time->format('H:i:s');
 
-        $presence = Presence::where([
-            ['user_id', '=', Auth::id()],
-            ['created_at', '!=', 'null'], 
-            ['date', '=', $date]
-        ])->first();
+        $photo = $this->takePicture($request->photo);
+        $presence = new Presence([
+            'user_id' => $user->id,
+            'status' => $request->status,
+            'date' => $date,
+            'in' => $time,
+            'photo' => $photo
+        ]);
 
-        if (!$presence) {
-            $presence = new Presence();
+        $presence->save();
 
-            $presence->user_id = Auth::user()->id;
-            $presence->status = $req->status;
-            $presence->ip_address = request()->getClientIp(true);
-            $presence->check_in = $time;
-            $presence->date = $date;
-
-            $photo = $req->photo;
-            if($photo) {
-                list($type, $data) = explode(';', $photo);
-                list(, $data)      = explode(',', $data);
-                $data = base64_decode($data);
-
-                $type = explode(';', $photo)[0];
-                $type = explode('/', $type)[1];
-
-                $filename = Str::random(10).'_'.time().'.'.$type;
-                $path = public_path().'/img/'.$filename;
-                $presence->photo = 'img/'.$filename;
-                file_put_contents($path, $data);
-            }
-            $presence->save();
-            return Redirect::route('/home');
-        } elseif ($presence->check_out == '') {
-            $presence->update([
-                $presence->check_out = $time
-            ]);
-            return Redirect::route('login');
-        } else
-            return Redirect::route('home');
+        return redirect()->route('home');
     }
 
-    public function recapPresence()
+    public function edit(Presence $presence)
     {
-        $title = "recap";
-
-        $user = Auth::user();
-        $presence = Presence::where('user_id', $user->id)->get();
-
-        return view('user.recap', compact('title', 'user', 'presence'));
+        return view('user.presence', compact('presence'));
     }
 
-    public function showPresences()
+    public function update(Presence $presence)
     {
-        $title = "presences";
+        $timezone = 'Asia/Jakarta';
+        $date_time = new DateTime('now', new DateTimeZone($timezone));
+        $time = $date_time->format('H:i:s');
+        $start = $presence->in;
 
-        $presence = User::join('presences', 'users.id', '=', 'presences.user_id')
-            ->get(['presences.*', 'users.name']);
+        $break_1 = Carbon::createFromFormat('H:i:s', $start);
+        $break_2 = Carbon::createFromFormat('H:i:s', $time);
 
-        return view('admin.presences', compact('title', 'presence'));
+        $total_hours = $break_2->diffInHours($break_1);
+
+        $presence->update([
+            'out' => $time,
+            'total_hours' => $total_hours
+        ]);
+
+        return redirect()->route('home');
     }
 }

@@ -43,7 +43,7 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function Presences()
+    public function presences()
     {
         return $this->hasMany(Presence::class, 'user_id');
     }
