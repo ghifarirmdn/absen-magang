@@ -31,7 +31,7 @@
                     @if (!isset($presence->in))
                         <p><i class="fa-solid fa-right-to-bracket bg-green-500 text-white rounded p-[3px]"></i>
                             {{ now()->format('H:i:s') }}</p>
-                        <p><i class="ffa-solid fa-right-from-bracket bg-red-500 text-white rounded p-[3px]"></i>-</p>
+                        <p><i class="fa-solid fa-right-from-bracket bg-red-500 text-white rounded p-[3px]"></i> -</p>
                     @else
                         <p><i class="fa-solid fa-right-to-bracket bg-green-500 text-white rounded p-[3px]"></i>
                             {{ $presence->in }}</p>

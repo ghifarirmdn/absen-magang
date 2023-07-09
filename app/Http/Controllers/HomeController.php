@@ -16,9 +16,7 @@ class HomeController extends Controller
 
         if (Auth::user()->is_admin == false) {
             $presences = Presence::where('user_id', Auth::id())->get();
-            $presence_today = Presence::where('user_id', Auth::id())
-                ->where('date', $date)
-                ->first();
+            $presence_today = Presence::where('date', $date)->first()->get();
 
             return view('user.home', compact('presences', 'presence_today'));
         } else {
