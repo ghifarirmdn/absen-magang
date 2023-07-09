@@ -1,25 +1,21 @@
 @extends('layouts.admin')
 @section('container')
     <div class="row">
-        <h3 class="text-gray-700 text-3xl font-medium capitalize">Hai <span
+        <h3 class="text-gray-700 text-3xl font-medium capitalize">Halo, <span
                 class="text-orange-400">{{ Auth::user()->name }}</span></h3>
     </div>
 
-    <div class="mt-8 grid grid-cols-3 justify-center content-center">
+    <div class="mt-8 grid grid-cols-3">
         <div class="col-start-1">
         </div>
-        @dd($presence_today->date)
         @if (!isset($presence_today->in))
             <button type="button" onclick="location.href='{{ route('create_presence') }}'"
                 class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Presensi
                 Masuk</button>
-        @elseif(!isset($presence_today->out))$presence_today->in
+        @elseif(!isset($presence_today->out))
             <button type="button" onclick="location.href='{{ route('edit_presence', $presence_today) }}'"
-                class="bg-red-500 rounded-md text-white p-2 hover:bg-red-700 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-200">Keluar</button>
-        @else
-            <button class="bg-gray-500 rounded-md text-white p-2 disabled">
-                Presence Completed
-            </button>
+                class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Presensi
+                Keluar</button>
         @endif
     </div>
 
