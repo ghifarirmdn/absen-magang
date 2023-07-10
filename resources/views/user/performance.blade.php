@@ -82,7 +82,7 @@
     let valueContainer = document.querySelector(".value-container");
 
     let progressValue = 0;
-    let progressEndValue = 75;
+    let progressEndValue = 50;
     let speed = 50;
 
     let progress = setInterval(() => {
