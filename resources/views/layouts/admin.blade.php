@@ -25,6 +25,7 @@
         </div>
     </div>
     <script src="https://kit.fontawesome.com/06b851ab81.js" crossorigin="anonymous"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.2.4/dist/cdn.min.js"></script>
 </body>
 
 </html>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PerformanceController;
 use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\UserController;
 
@@ -31,6 +32,9 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Home Route
 Route::get('/home', [HomeController::class, 'home'])->name('home');
+Route::get('/performance', function () {
+    return view('user.performance');
+})->name('performance');
 
 // Presence route
 Route::get('/presence', [PresenceController::class, 'create'])->name('create_presence');
