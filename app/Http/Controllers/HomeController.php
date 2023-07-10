@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use DateTime;
-
-use DateTimeZone;
-use App\Models\Presence;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+
+use App\Models\Presence;
+use App\Models\User;
 
 class HomeController extends Controller
 {
     public function home()
     {
-        $timezone = 'Asia/Jakarta';
-        $date_time = new DateTime('now', new DateTimeZone($timezone));
-        $date = $date_time->format('Y-m-d');
+        $date = Carbon::now()->format('Y-m-d');
 
         if (Auth::user()->is_admin == false) {
             $presences = Presence::where('user_id', Auth::id())->get();
-            $presence_today = Presence::where('date', $date)->get();
+            $presence_today = Presence::where('user_id', Auth::id())
+                ->where('date', $date)
+                ->first();
 
             return view('user.home', compact('presences', 'presence_today'));
         } else {
