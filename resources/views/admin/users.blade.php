@@ -2,8 +2,7 @@
 
 @section('container')
     <div class="row">
-        <h3 class="text-gray-700 text-3xl font-medium capitalize"><span
-                class="text-orange-400">Data Users</span></h3>
+        <h3 class="text-gray-700 text-3xl font-medium capitalize">Data Users</h3>
     </div>
 
     <div class="flex flex-col mt-8">

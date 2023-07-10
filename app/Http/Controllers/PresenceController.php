@@ -18,7 +18,13 @@ class PresenceController extends Controller
 
     public function create()
     {
-        $presence = Presence::where('user_id', Auth::id())->first();
+        $timezone = 'Asia/Jakarta';
+        $date_time = new DateTime('now', new DateTimeZone($timezone));
+        $date = $date_time->format('Y-m-d');
+
+        $presence = Presence::where('user_id', Auth::id())
+        ->where('date', $date)
+        ->first();
 
         return view('user.presence', compact('presence'));
     }
