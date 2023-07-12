@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('permissions', function (Blueprint $table) {
+        Schema::create('offices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->string('category');
-            $table->string('permission_letter');
+            $table->enum('working_status', ['Karyawan', 'Intern', 'Part-time']);
+            $table->string('working_hours');
+            $table->string('entry_hours');
+            $table->integer('target');
+            $table->enum('holidays', [1, 2]);
             $table->timestamps();
         });
     }
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('permissions');
+        Schema::dropIfExists('offices');
     }
 };

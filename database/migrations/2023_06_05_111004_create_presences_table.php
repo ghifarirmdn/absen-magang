@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('total_hours')->nullable();
             $table->string('status')->required();
             $table->string('photo');
+            $table->boolean('is_on_time')->nullable();
             $table->timestamps();
         });
     }

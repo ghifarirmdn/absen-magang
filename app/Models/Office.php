@@ -2,22 +2,21 @@
 
 namespace App\Models;
 
-use App\Models\User;
+use App\Models\Performance;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Presence extends Model
+class Office extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'user_id',
-        'date',
-        'in',
-        'out',
-        'total_hours',
-        'status',
-        'photo'
+        'working_status',
+        'working_hours',
+        'entry_hours',
+        'target',
+        'holidays',
     ];
 
     public function user()

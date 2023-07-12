@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('permissions', function (Blueprint $table) {
+        Schema::create('performances', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->string('category');
-            $table->string('permission_letter');
+            $table->foreignId('office_id')->constrained('offices')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('presence_id')->constrained('presences')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->integer('total_presence')->nullable();
+            $table->integer('total_permit')->nullable();
+            $table->time('recap_hours')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('permissions');
+        Schema::dropIfExists('performances');
     }
 };
