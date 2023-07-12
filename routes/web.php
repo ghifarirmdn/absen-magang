@@ -36,6 +36,10 @@ Route::get('/performance', function () {
     return view('user.performance');
 })->name('performance');
 
+Route::get('/recap', function () {
+    return view('admin.recap');
+})->name('recap');
+
 // Presence route
 Route::get('/presence', [PresenceController::class, 'create'])->name('create_presence');
 Route::post('/presence', [PresenceController::class, 'store'])->name('store_presence');
