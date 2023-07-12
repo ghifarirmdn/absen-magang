@@ -18,9 +18,7 @@ class UserController extends Controller
 
     public function create()
     {
-        $title = 'create';
-
-        return view('admin.create', compact('title'));
+        return view('admin.create');
     }
 
     public function insert(Request $request)
