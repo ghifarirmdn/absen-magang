@@ -30,6 +30,7 @@
         <form class="space-y-4" action="{{ route('store_presence', $presence) }}" method="POST"
             content-type="multipart/form-data">
             @csrf
+            <input type="text">
             <div class="w-full">
                 <label for="status"
                     class="block text-sm font-medium leading-6 text-gray-900 sm:text-base md:text-lg">Status</label>

@@ -17,7 +17,8 @@ class Presence extends Model
         'out',
         'total_hours',
         'status',
-        'photo'
+        'photo',
+        'is_on_time'
     ];
 
     public function user()

@@ -23,8 +23,8 @@ class PresenceController extends Controller
         $date = $date_time->format('Y-m-d');
 
         $presence = Presence::where('user_id', Auth::id())
-        ->where('date', $date)
-        ->first();
+            ->where('date', $date)
+            ->first();
 
         return view('user.presence', compact('presence'));
     }
@@ -38,15 +38,18 @@ class PresenceController extends Controller
         $date = $date_time->format('Y-m-d');
         $time = $date_time->format('H:i:s');
 
+        $ontime = '';
+        $ontime = $time <= '08:00:00' ? True : False; //ubah sesuai waktu yang ada pada tabel office
+
         $photo = $this->takePicture($request->photo);
         $presence = new Presence([
             'user_id' => $user->id,
             'status' => $request->status,
             'date' => $date,
             'in' => $time,
-            'photo' => $photo
+            'photo' => $photo,
+            'is_on_time' => $ontime
         ]);
-
         $presence->save();
 
         return redirect()->route('home');
