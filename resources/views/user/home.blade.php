@@ -5,7 +5,7 @@
                 class="text-orange-400">{{ Auth::user()->name }}</span></h3>
     </div>
 
-    <div class="mt-8 grid grid-cols-3">
+    <div class="mt-5 grid grid-cols-3">
         <div class="col-start-1">
         </div>
         @if (!isset($presence_today->in))

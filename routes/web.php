@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\PerformanceController;
 use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\UserController;
@@ -44,3 +45,6 @@ Route::patch('/presence/{presence}/update', [PresenceController::class, 'update'
 
 // Users Route
 Route::get('/users', [UserController::class, 'index'])->name('users');
+
+//Office
+Route::get('/office', [OfficeController::class, 'index'])->name('office');

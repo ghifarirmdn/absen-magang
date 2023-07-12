@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Otak Kanan</title>
     <link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">
+    <link rel="stylesheet" href="{{ asset('_assets/css/admin.css') }}">
     <script src="{{ mix('js/main.js', 'assets/build') }}"></script>
     @vite('resources/css/app.css')
 </head>
@@ -13,7 +14,7 @@
 <body>
     <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-200 font-roboto">
         @include('partials.sidebar')
-        
+
         <div class="flex-1 flex flex-col overflow-hidden">
             @include('partials.navbar')
 

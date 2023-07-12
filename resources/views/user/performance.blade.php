@@ -1,35 +1,9 @@
 @extends('layouts.admin')
 @section('container')
 
-<style>
-
-.circular-progress {
-  position: relative;
-  height: 250px;
-  width: 250px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-}
-.circular-progress:before {
-  content: "";
-  position: absolute;
-  height: 84%;
-  width: 84%;
-  background-color: #ffffff;
-  border-radius: 50%;
-}
-.value-container {
-  position: relative;
-  font-family: "Poppins", sans-serif;
-  font-size: 50px;
-  color: #231c3d;
-}
-</style>
-
 <h3 class="text-black font-bold text-2xl capitalize 2xl:text-3xl"><span class="text-orange-400">Performa</span> Kamu bulan Ini!</h3>
 
-<div class="p-5 bg-white border border-gray-200 rounded-lg shadow mt-20">
+<div class="p-5 bg-white border border-gray-200 rounded-lg shadow mt-5">
     <div class="performance flex flex-col lg:flex-row-reverse lg:justify-between">
 
         <div class="circular-progress">
@@ -54,13 +28,13 @@
                     </div>
                 </div>
             </div>
-    
+
             <h4 class="text-sm my-8 lg:text-lg">
                 Selama Bulan Juli Kamu Telah Bekerja dengan Durasi <b>:</b> <br>
                 <span class="text-orange-400 font-bold text-md">24 Jam</span>
                 <span class="text-orange-400 font-bold text-md">25 Menit</span>
             </h4>
-    
+
             <div class="result-month">
                 <div class="grid grid-cols-2">
                     <div class="performance-left">
