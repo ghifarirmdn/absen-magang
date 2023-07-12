@@ -53,6 +53,3 @@ Route::get('/users', [UserController::class, 'index'])->name('users');
 //Office
 Route::get('/office', [OfficeController::class, 'index'])->name('office');
 Route::get('/users/create', [UserController::class, 'create'])->name('create-users');
-
-//Office
-Route::get('/office', [OfficeController::class, 'index'])->name('office');
