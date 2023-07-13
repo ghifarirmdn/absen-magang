@@ -49,7 +49,9 @@ Route::patch('/presence/{presence}/update', [PresenceController::class, 'update'
 
 // Users Route
 Route::get('/users', [UserController::class, 'index'])->name('users');
+Route::get('/user/create', [UserController::class, 'create'])->name('create_user');
+Route::get('/user/store', [UserController::class, 'store'])->name('store_user');
 
 //Office
 Route::get('/office', [OfficeController::class, 'index'])->name('office');
-Route::get('/users/create', [UserController::class, 'create'])->name('create-users');
+Route::get('/office/create', [OfficeController::class, 'create'])->name('office_create');

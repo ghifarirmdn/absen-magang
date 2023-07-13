@@ -21,7 +21,7 @@ class UserController extends Controller
         return view('admin.create');
     }
 
-    public function insert(Request $request)
+    public function store(Request $request)
     {
         User::create([
             'name' => $request->name,
@@ -29,7 +29,7 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect('/admin/user');
+        return redirect()->route('users');
     }
 
     public function edit($id)

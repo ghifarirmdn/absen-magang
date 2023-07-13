@@ -4,7 +4,7 @@
     <h3 class="text-gray-700 text-3xl font-medium capitalize">Data Pengguna</h3>
 
     <div class="flex justify-end mt-8">
-        <a href="{{ route('create-users') }}" class="bg-orange-400 p-2 rounded-md text-white hover:bg-orange-500">Tambahkan Pengguna</a>
+        <a href="{{ route('create_user') }}" class="bg-orange-400 p-2 rounded-md text-white hover:bg-orange-500">Tambahkan Pengguna</a>
     </div>
 
     <div class="flex flex-col mt-5">

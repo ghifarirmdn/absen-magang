@@ -20,7 +20,7 @@ class OfficeController extends Controller
      */
     public function create()
     {
-        //
+        return view('office_create');
     }
 
     /**
