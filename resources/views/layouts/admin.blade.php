@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Otak Kanan</title>
     <link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.css" rel="stylesheet" />
     <script src="{{ mix('js/main.js', 'assets/build') }}"></script>
     @vite('resources/css/app.css')
 </head>
@@ -26,6 +27,7 @@
     </div>
     <script src="https://kit.fontawesome.com/06b851ab81.js" crossorigin="anonymous"></script>
     <script defer src="https://unpkg.com/alpinejs@3.2.4/dist/cdn.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.js"></script>
 </body>
 
 </html>
