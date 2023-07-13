@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Presence;
 use App\Models\User;
+use App\Models\Office;
+use App\Models\Presence;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -18,41 +19,48 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('admin.create');
+        return view('admin.user_create');
     }
 
-    public function insert(Request $request)
+    public function store(Request $request)
     {
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'is_admin' => $request->is_admin
         ]);
 
-        return redirect('/admin/user');
+        $user = User::get()->last();
+
+        Office::create([
+            'user_id' => $user->id,
+            'working_status' => $request->working_status,
+            'working_hours' => $request->working_hours,
+            'entry_hours' => $request->entry_hours,
+            'target' => $request->target,
+            'holidays' => $request->holidays,
+        ]);
+
+        return redirect()->route('home');
     }
 
-    public function edit($id)
+    public function show(User $user)
     {
-        $data = User::find($id);
-        $title = 'edit';
-
-        return view('admin.edit', compact('data', 'title'));
+        return view('admin.user_show', compact('user'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        $data = User::find($id);
-        $data->update($request->all());
+        $user->update($request->all());
 
-        return redirect('/admin/user');
+        return redirect()->route('update_user');
     }
 
-    public function delete($id)
+    public function delete(User $user)
     {
-        $data = User::find($id);
-        $data->delete();
+        $user->delete();
 
-        return redirect('/admin/user');
+        return redirect()->route('home');
     }
 }
