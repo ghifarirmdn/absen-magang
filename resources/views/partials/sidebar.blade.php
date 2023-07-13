@@ -26,7 +26,6 @@
                 <i class="fa-solid fa-list"></i></i><span class="mx-3">Recap</span>
             </a>
         @endif
-        
         <a href="{{ route('performance') }}" class="flex items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100 {{ request()->is('performance*') ? 'text-white bg-gray-700' : 'text-gray-500' }}">
             <i class="fa-solid fa-gauge"></i><span class="mx-3">Performance</span>
         </a>
