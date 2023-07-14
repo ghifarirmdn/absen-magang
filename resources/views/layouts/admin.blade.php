@@ -14,7 +14,7 @@
 <body>
     <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-200 font-roboto">
         @include('partials.sidebar')
-        
+
         <div class="flex-1 flex flex-col overflow-hidden">
             @include('partials.navbar')
 
@@ -27,7 +27,9 @@
     </div>
     <script src="https://kit.fontawesome.com/06b851ab81.js" crossorigin="anonymous"></script>
     <script defer src="https://unpkg.com/alpinejs@3.2.4/dist/cdn.min.js"></script>
+    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.js"></script>
+
 </body>
 
 </html>
