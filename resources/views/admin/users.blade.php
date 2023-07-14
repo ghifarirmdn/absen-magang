@@ -57,7 +57,7 @@
                                         </div>
                                     </td>
                                     <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="text-sm leading-5 text-gray-900">
+                                        <div class="text-sm leading-5 text-gray-900 hover:text-blue-900">
                                             <button type="button"
                                                 onclick="window.location='{{ route('show_user', $user) }}'">
                                                 <i class="fa-sharp fa-solid fa-magnifying-glass"></i> View
