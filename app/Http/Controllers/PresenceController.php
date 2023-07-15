@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Phar;
 use DateTime;
 use DateTimeZone;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Presence;
 use App\Traits\TakePhoto;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Exports\PresenceExport;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PresenceController extends Controller
 {
@@ -23,8 +26,8 @@ class PresenceController extends Controller
         $date = $date_time->format('Y-m-d');
 
         $presence = Presence::where('user_id', Auth::id())
-        ->where('date', $date)
-        ->first();
+            ->where('date', $date)
+            ->first();
 
         return view('user.presence', compact('presence'));
     }
@@ -75,5 +78,10 @@ class PresenceController extends Controller
         ]);
 
         return redirect()->route('home');
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(new PresenceExport, 'presence.xlsx');
     }
 }
