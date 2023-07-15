@@ -45,6 +45,7 @@ Route::get('/presence', [PresenceController::class, 'create'])->name('create_pre
 Route::post('/presence', [PresenceController::class, 'store'])->name('store_presence');
 Route::get('/presence/{presence}/edit', [PresenceController::class, 'edit'])->name('edit_presence');
 Route::patch('/presence/{presence}/update', [PresenceController::class, 'update'])->name('update_presence');
+Route::get('/presence/export', [PresenceController::class, 'exportExcel'])->name('export_excel');
 
 // Users Route
 Route::get('/users', [UserController::class, 'index'])->name('users');
