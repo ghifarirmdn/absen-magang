@@ -19,6 +19,14 @@
                         id="edit-tab" data-tabs-target="#edit" type="button" role="tab" aria-controls="edit"
                         aria-selected="false">Edit</button>
                 </li>
+                <li class="mr-2 ms-auto">
+                    <form action="{{ route('delete_user', $user) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button
+                            class="inline-block p-4 border-b-2 bg-gray-100 text-red-400 border-transparent rounded-t-lg hover:text-red-600 hover:border-red-500 dark:hover:text-red-500">Delete</button>
+                    </form>
+                </li>
             </ul>
         </div>
         {{-- https://tailwindcomponents.com/component/profile-page/landing --}}
