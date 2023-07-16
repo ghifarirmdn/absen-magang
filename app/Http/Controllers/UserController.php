@@ -54,7 +54,7 @@ class UserController extends Controller
     {
         $user->update($request->all());
 
-        return redirect()->route('update_user');
+        return redirect()->route('users');
     }
 
     public function delete(User $user)
