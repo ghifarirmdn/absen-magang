@@ -6,7 +6,7 @@
                 class="text-orange-400">{{ Auth::user()->name }}</span></h3>
     </div>
     <div class="flex flex-col mt-8">
-        <button type="button" onclick="window.location='{{ route('export_excel') }}'" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 ms-auto mb-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Download</button>
+        <button type="button" onclick="window.location='{{ route('export_excel') }}'" class="focus:outline-none text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 ms-auto mb-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Download</button>
         <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
             <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
                 <table class="min-w-full">
