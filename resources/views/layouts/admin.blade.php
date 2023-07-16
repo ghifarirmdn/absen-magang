@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Otak Kanan</title>
+
     <link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.css" rel="stylesheet" />
     <script src="{{ mix('js/main.js', 'assets/build') }}"></script>
