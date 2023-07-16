@@ -53,3 +53,4 @@ Route::get('/user/create', [UserController::class, 'create'])->name('create_user
 Route::post('/user/store', [UserController::class, 'store'])->name('store_user');
 Route::get('/user/{user}', [UserController::class, 'show'])->name('show_user');
 Route::patch('/user/{user}/update', [UserController::class, 'update'])->name('update_user');
+Route::delete('/user/{user}/delete', [UserController::class, 'delete'])->name('delete_user');
