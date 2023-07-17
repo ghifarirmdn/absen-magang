@@ -40,12 +40,6 @@
                         in</button>
                 </div>
             </form>
-
-            <p class="mt-10 text-center text-sm text-gray-500 md:text-base">
-                Belum punya Akun?
-                <a href="/register" class="font-semibold leading-6 text-orange-400 hover:text-orange-500">
-                    Daftar disini</a>
-            </p>
         </div>
     </div>
 @endsection
