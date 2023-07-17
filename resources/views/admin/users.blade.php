@@ -56,13 +56,13 @@
                                             Internship
                                         </div>
                                     </td>
-                                    <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="text-sm leading-5 text-gray-900 hover:text-blue-900">
-                                            <button type="button"
-                                                onclick="window.location='{{ route('show_user', $user) }}'">
-                                                <i class="fa-sharp fa-solid fa-magnifying-glass"></i> View
-                                            </button>
-                                        </div>
+                                    <td class="px-6 py-2 flex gap-2 border-gray-200">
+                                        <a href="{{ route('show_user', $user) }}" class="hover:text-orange-400"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <form action="{{ route('delete_user', $user) }}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="hover:text-red-600" onclick="confirmation()"><i class="fa-solid fa-trash"></i></button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
@@ -79,4 +79,10 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const confirmation = () => {
+            window.confirm("Apakah anda yakin ingin menghapus user ini?");
+        }
+    </script>
 @endsection

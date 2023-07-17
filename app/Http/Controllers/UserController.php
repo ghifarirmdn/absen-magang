@@ -57,9 +57,10 @@ class UserController extends Controller
         return redirect()->route('users');
     }
 
-    public function delete(User $user)
+    public function delete($id)
     {
-        $user->delete();
+        $data = User::find($id);
+        $data->delete();
 
         return redirect()->route('users');
     }
