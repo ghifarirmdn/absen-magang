@@ -32,6 +32,10 @@ Route::get('/performance', function () {
     return view('user.performance');
 })->name('performance');
 
+Route::get('/change-password', function () {
+    return view('user.change_password');
+})->name('change_password');
+
 Route::get('/recap', function () {
     return view('admin.recap');
 })->name('recap');
