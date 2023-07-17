@@ -2,12 +2,13 @@
 
 namespace App\Exports;
 
-use App\Models\User;
+use App\Models\Presence;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 
-class PresenceExport implements FromQuery, WithMapping
+class PresenceExport implements FromQuery, WithMapping, WithHeadings
 {
     /**
      * @return \Illuminate\Support\Collection
@@ -17,16 +18,18 @@ class PresenceExport implements FromQuery, WithMapping
 
     public function query()
     {
-        return User::query();
+        return Presence::query();
     }
 
-    public function map($user): array
+    public function map($presence): array
     {
         return [
-            $user->presence->date,
-            $user->presence->in,
-            $user->presence->out,
-            $user->name
+            $presence->date,
+            $presence->user->name,
+            $presence->user->office->working_status,
+            $presence->in,
+            $presence->out,
+            $presence->total_hours
         ];
     }
 
@@ -34,8 +37,11 @@ class PresenceExport implements FromQuery, WithMapping
     {
         return [
             'Date',
+            'Name',
+            'Status',
             'Time In',
             'Time Out',
+            'Durasi'
         ];
     }
 }
