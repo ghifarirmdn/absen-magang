@@ -84,4 +84,11 @@ class PresenceController extends Controller
     {
         return Excel::download(new PresenceExport, 'presence.xlsx');
     }
+
+    public function recap()
+    {
+        $presences = Presence::all();
+
+        return view('admin.presence_recap', compact('presences'));
+    }
 }

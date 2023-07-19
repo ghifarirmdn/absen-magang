@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->enum('working_status', ['Karyawan', 'Intern', 'Part-time']);
-            $table->string('working_hours');
-            $table->string('entry_hours');
-            $table->integer('target');
+            $table->boolean('is_fixed_entry')->default(True);
+            $table->string('entry_hours')->nullable();
+            $table->integer('target')->nullable();
             $table->enum('holidays', [1, 2]);
             $table->timestamps();
         });

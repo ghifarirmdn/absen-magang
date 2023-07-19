@@ -36,7 +36,7 @@ class UserController extends Controller
         Office::create([
             'user_id' => $user->id,
             'working_status' => $request->working_status,
-            'working_hours' => $request->working_hours,
+            'is_fixed_entry' => $request->working_hours,
             'entry_hours' => $request->entry_hours,
             'target' => $request->target,
             'holidays' => $request->holidays,
