@@ -61,7 +61,7 @@
                                 </td>
                                 <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
                                     <div class="text-sm leading-5 text-gray-900">
-                                        {{ $presence->office->is_fixed_entry }}
+                                        {{ $presence->user->office->working_status }}
                                     </div>
                                 </td>
                                 <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">

@@ -4,22 +4,24 @@
         <h3 class="text-gray-700 text-3xl font-medium capitalize">Halo, <span
                 class="text-orange-400">{{ Auth::user()->name }}</span></h3>
     </div>
-
     <div class="mt-8 flex justify-end gap-2">
         @if (!isset($presence_today->in))
             <button type="button" onclick="location.href='{{ route('create_presence') }}'"
-                class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Presensi
+                class="text-white bg-green-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Presensi
                 Masuk</button>
-            <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" class="block text-white bg-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
-                Tombol Izin
+            <button data-modal-target="defaultModal" data-modal-toggle="defaultModal"
+                class="block text-white bg-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                type="button">
+                Izin
             </button>
         @elseif(!isset($presence_today->out))
             <button type="button" onclick="location.href='{{ route('edit_presence', $presence_today) }}'"
-                class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Presensi
+                class="text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Presensi
                 Keluar</button>
         @endif
 
-        <div id="defaultModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div id="defaultModal" tabindex="-1" aria-hidden="true"
+            class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-2xl max-h-full">
                 <!-- Modal content -->
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -28,9 +30,13 @@
                         <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
                             Perizinan
                         </h3>
-                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="defaultModal">
-                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                        <button type="button"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                            data-modal-hide="defaultModal">
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                             </svg>
                             <span class="sr-only">Close modal</span>
                         </button>
@@ -39,27 +45,34 @@
                     <form>
                         <div class="p-6 space-y-6">
                             <div class="mb-6">
-                                <label for="status" class="block mb-2 text-sm font-medium text-gray-900">Mau Izin Apa?</label>
-                                <select id="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5">
+                                <label for="status" class="block mb-2 text-sm font-medium text-gray-900">Mau Izin
+                                    Apa?</label>
+                                <select id="status"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5">
                                     <option selected>Pilih Status</option>
                                     <option>Cuti</option>
                                     <option>Sakit</option>
                                     <option>Lainnya</option>
                                 </select>
                             </div>
-                                
+
                             <div class="flex w-full items-center justify-center bg-grey-lighter mb-5">
-                                <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide border border-orange-400 cursor-pointer hover:bg-orange-400 hover:text-white">
-                                    <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                        <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                                <label
+                                    class="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide border border-orange-400 cursor-pointer hover:bg-orange-400 hover:text-white">
+                                    <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
                                     </svg>
                                     <span class="mt-2 text-base leading-normal">Masukkan File Perizinan</span>
                                     <input type='file' class="hidden" />
                                 </label>
                             </div>
                         </div>
-                        <div class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                            <button type="submit" class="bg-orange-400 text-white rounded-md p-2 w-20 text-center hover:bg-orange-400 mb-5">Submit</button>
+                        <div
+                            class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                            <button type="submit"
+                                class="bg-orange-400 text-white rounded-md p-2 w-20 text-center hover:bg-orange-400 mb-5">Submit</button>
                         </div>
                     </form>
                 </div>
