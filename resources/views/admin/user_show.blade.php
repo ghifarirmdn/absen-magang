@@ -27,42 +27,42 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td class="detail-left font-medium text-lg">Name</td> 
-                            <td class="pl-2">:</td> 
+                            <td class="detail-left font-medium text-lg">Name</td>
+                            <td class="pl-2">:</td>
                             <td class="pl-5">{{ $user->name }}</td>
                         </tr>
                         <tr>
-                            <td class="detail-left font-medium text-lg">Email</td> 
-                            <td class="pl-2">:</td> 
+                            <td class="detail-left font-medium text-lg">Email</td>
+                            <td class="pl-2">:</td>
                             <td class="pl-5">{{ $user->email }}</td>
                         </tr>
                         <tr>
-                            <td class="detail-left font-medium text-lg">Status</td> 
-                            <td class="pl-2">:</td> 
+                            <td class="detail-left font-medium text-lg">Status</td>
+                            <td class="pl-2">:</td>
                             <td class="pl-5">{{ $user->is_admin ? 'Admin' : 'User' }}</td>
                         </tr>
                         <tr>
-                            <td class="detail-left font-medium text-lg">Status Pegawai</td> 
-                            <td class="pl-2">:</td> 
+                            <td class="detail-left font-medium text-lg">Status Pegawai</td>
+                            <td class="pl-2">:</td>
                             <td class="pl-5">{{ $user->office->working_status }}</td>
                         </tr>
                         <tr>
-                            <td class="detail-left font-medium text-lg">Jam Kerja</td> 
-                            <td class="pl-2">:</td> 
-                            <td class="pl-5">{{ $user->office->working_hours }}</td>
+                            <td class="detail-left font-medium text-lg">Jam Kerja</td>
+                            <td class="pl-2">:</td>
+                            <td class="pl-5">{{ $user->office->is_fixed_entry }}</td>
                         </tr>
-                        <tr><td class="detail-left font-medium text-lg">Jam Masuk</td> 
-                            <td class="pl-2">:</td> 
+                        <tr><td class="detail-left font-medium text-lg">Jam Masuk</td>
+                            <td class="pl-2">:</td>
                             <td class="pl-5">{{ $user->office->entry_hours }}</td>
                         </tr>
                         <tr>
-                            <td class="detail-left font-medium text-lg">Target Jam</td> 
-                            <td class="pl-2">:</td> 
+                            <td class="detail-left font-medium text-lg">Target Jam</td>
+                            <td class="pl-2">:</td>
                             <td class="pl-5">{{ $user->office->target }}</td>
                         </tr>
                         <tr>
-                            <td class="detail-left font-medium text-lg">Jumlah Libur</td> 
-                            <td class="pl-2">:</td> 
+                            <td class="detail-left font-medium text-lg">Jumlah Libur</td>
+                            <td class="pl-2">:</td>
                             <td class="pl-5">{{ $user->office->holidays }}</td>
                         </tr>
                     </tbody>

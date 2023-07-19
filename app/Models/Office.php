@@ -13,7 +13,7 @@ class Office extends Model
     protected $fillable = [
         'user_id',
         'working_status',
-        'working_hours',
+        'is_fixed_entry',
         'entry_hours',
         'target',
         'holidays',

@@ -45,9 +45,12 @@
             </div>
             <div class="mb-6">
                 <label for="working_hours" class="block mb-2 text-sm font-medium text-gray-900">Jam Kerja</label>
-                <input name="working_hours" type="text" id="working_hours"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                    placeholder="Masukkan Jam Kerja" required>
+                <select name="working_hours" id="working_hours"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5">
+                    <option selected>-- Pilih Status Jam Kerja --</option>
+                    <option value="0">Bebas</option>
+                    <option value="1">Tetap</option>
+                </select>
             </div>
             <div class="mb-6">
                 <label for="entry_hours" class="block mb-2 text-sm font-medium text-gray-900">Jam Masuk</label>

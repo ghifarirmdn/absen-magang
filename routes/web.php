@@ -36,16 +36,13 @@ Route::get('/change-password', function () {
     return view('user.change_password');
 })->name('change_password');
 
-Route::get('/recap', function () {
-    return view('admin.recap');
-})->name('recap');
-
 // Presence route
 Route::get('/presence', [PresenceController::class, 'create'])->name('create_presence');
 Route::post('/presence', [PresenceController::class, 'store'])->name('store_presence');
 Route::get('/presence/{presence}/edit', [PresenceController::class, 'edit'])->name('edit_presence');
 Route::patch('/presence/{presence}/update', [PresenceController::class, 'update'])->name('update_presence');
 Route::get('/presence/export', [PresenceController::class, 'exportExcel'])->name('export_excel');
+Route::get('/presence/recap', [PresenceController::class, 'recap'])->name('recap_presence');
 
 // Users Route
 Route::get('/users', [UserController::class, 'index'])->name('users');

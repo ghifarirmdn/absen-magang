@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 
 @section('container')
-    <h3 class="text-gray-700 text-3xl font-medium capitalize">Data Pengguna</h3>
-    <div class="flex justify-end mt-8">
-        <a href="{{ route('create_user') }}" class="bg-orange-400 p-2 rounded-md text-white hover:bg-orange-500">Tambahkan
-            Pengguna</a>
+    <div class="flex justify-between mt-5">
+        <h3 class="text-gray-700 text-3xl font-medium capitalize">Data Pengguna</h3>
+        <a href="{{ route('create_user') }}" class="bg-orange-400 p-2 rounded-md text-white text-sm hover:bg-orange-500"><i
+                class="fa-solid fa-user-plus mr-1"></i>Tambahkan Pengguna</a>
     </div>
     <div class="flex flex-col mt-5">
         <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
@@ -39,29 +39,34 @@
                             @foreach ($users as $user)
                                 <tr>
                                     <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
-                                        {{ $loop->iteration }}
+                                        <div class="text-sm leading-5 text-gray-800">
+                                            {{ $loop->iteration }}
+                                        </div>
                                     </td>
                                     <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="text-sm leading-5 text-gray-900">
+                                        <div class="text-sm leading-5 text-gray-800">
                                             {{ $user->name }}
                                         </div>
                                     </td>
                                     <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="text-sm leading-5 text-gray-900">
+                                        <div class="text-sm leading-5 text-gray-800">
                                             {{ $user->email }}
                                         </div>
                                     </td>
                                     <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="text-sm leading-5 text-gray-900">
+                                        <div class="text-sm leading-5 text-gray-800">
                                             Internship
                                         </div>
                                     </td>
                                     <td class="px-6 py-2 flex gap-2 border-gray-200">
-                                        <a href="{{ route('show_user', $user) }}" class="hover:text-orange-400"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href="{{ route('show_user', $user) }}"
+                                            class="text-green-600 hover:text-green-800"><i
+                                                class="fa-solid fa-pen-to-square"></i></a>
                                         <form action="{{ route('delete_user', $user) }}" method="POST">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="hover:text-red-600" onclick="confirmation()"><i class="fa-solid fa-trash"></i></button>
+                                            <button type="submit" class="text-red-600 hover:text-red-800"
+                                                onclick="confirmation()"><i class="fa-solid fa-trash"></i></button>
                                         </form>
                                     </td>
                                 </tr>
