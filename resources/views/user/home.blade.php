@@ -5,19 +5,21 @@
                 class="text-orange-400">{{ Auth::user()->name }}</span></h3>
     </div>
     <div class="mt-8 flex justify-end gap-2">
-        @if (!isset($presence_today->in))
-            <button type="button" onclick="location.href='{{ route('create_presence') }}'"
-                class="text-white bg-green-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Presensi
-                Masuk</button>
-            <button data-modal-target="defaultModal" data-modal-toggle="defaultModal"
-                class="block text-white bg-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                type="button">
-                Izin
-            </button>
-        @elseif(!isset($presence_today->out))
-            <button type="button" onclick="location.href='{{ route('edit_presence', $presence_today) }}'"
-                class="text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Presensi
-                Keluar</button>
+        @if (!isset($permission))
+            @if (!isset($presence_today->in))
+                <button type="button" onclick="location.href='{{ route('create_presence') }}'"
+                    class="text-white bg-green-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Presensi
+                    Masuk</button>
+                <button data-modal-target="defaultModal" data-modal-toggle="defaultModal"
+                    class="block text-white bg-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                    type="button">
+                    Izin
+                </button>
+            @elseif(!isset($presence_today->out))
+                <button type="button" onclick="location.href='{{ route('edit_presence', $presence_today) }}'"
+                    class="text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Presensi
+                    Keluar</button>
+            @endif
         @endif
 
         <div id="defaultModal" tabindex="-1" aria-hidden="true"
@@ -42,20 +44,20 @@
                         </button>
                     </div>
                     <!-- Modal body -->
-                    <form>
+                    <form action="{{ route('store_permission') }}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <div class="p-6 space-y-6">
                             <div class="mb-6">
-                                <label for="status" class="block mb-2 text-sm font-medium text-gray-900">Mau Izin
-                                    Apa?</label>
-                                <select id="status"
+                                <label for="status" class="block mb-2 text-sm font-medium text-gray-900">Masukkan Data
+                                    Perizinan</label>
+                                <select name="category" id="status"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5">
-                                    <option selected>Pilih Status</option>
+                                    <option selected>-- Pilih Keterangan --</option>
                                     <option>Cuti</option>
                                     <option>Sakit</option>
                                     <option>Lainnya</option>
                                 </select>
                             </div>
-
                             <div class="flex w-full items-center justify-center bg-grey-lighter mb-5">
                                 <label
                                     class="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide border border-orange-400 cursor-pointer hover:bg-orange-400 hover:text-white">
@@ -64,8 +66,8 @@
                                         <path
                                             d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
                                     </svg>
-                                    <span class="mt-2 text-base leading-normal">Masukkan File Perizinan</span>
-                                    <input type='file' class="hidden" />
+                                    <span class="mt-2 text-base leading-normal">Upload Surat Izin</span>
+                                    <input name="permission_letter" type="file" class="hidden" />
                                 </label>
                             </div>
                         </div>
@@ -80,7 +82,7 @@
         </div>
     </div>
 
-    <div class="flex flex-col mt-3">
+    <div class="flex flex-col">
         <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
             <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
                 <table class="min-w-full">
@@ -93,6 +95,10 @@
                             <th
                                 class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                 Date
+                            </th>
+                            <th
+                                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                Status
                             </th>
                             <th
                                 class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
@@ -116,16 +122,19 @@
                                         {{ date('d-m-Y', strtotime($presence->date)) }}
                                     </td>
                                     <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
+                                        {{ $presence->status }}
+                                    </td>
+                                    <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
                                         <div class="grid grid-rows-2 gap-2">
                                             <div class="text-sm leading-5 text-gray-900">
                                                 <i
                                                     class="fa-solid fa-right-to-bracket bg-green-500 text-white rounded p-[3px]"></i>
-                                                {{ $presence->in }}
+                                                {{ $presence->in ?? '-' }}
                                             </div>
                                             <div class="text-sm leading-5 text-gray-900">
                                                 <i
                                                     class="fa-solid fa-right-from-bracket bg-red-500 text-white rounded p-[3px]"></i>
-                                                {{ $presence->out }}
+                                                {{ $presence->out ?? '-' }}
                                             </div>
                                         </div>
                                     </td>
