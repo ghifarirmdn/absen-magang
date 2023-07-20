@@ -9,13 +9,13 @@
                 role="tablist">
                 <li class="mr-2" role="presentation">
                     <button
-                        class="inline-block p-4 border-b-2 text-orange-400 border-transparent rounded-t-lg hover:text-gray-600 hover:border-orange-300"
+                        class="inline-block p-4 border-b-2 text-orange-400 border-transparent rounded-t-lg hover:text-blue-600 hover:border-orange-300"
                         id="detail-tab" data-tabs-target="#detail" type="button" role="tab" aria-controls="detail"
                         aria-selected="false">Details</button>
                 </li>
                 <li class="mr-2" role="presentation">
                     <button
-                        class="inline-block p-4 border-b-2 text-orange-400 border-transparent rounded-t-lg hover:text-gray-600 hover:border-orange-300"
+                        class="inline-block p-4 border-b-2 text-orange-400 border-transparent rounded-t-lg hover:text-blue-600 hover:border-orange-300"
                         id="edit-tab" data-tabs-target="#edit" type="button" role="tab" aria-controls="edit"
                         aria-selected="false">Edit</button>
                 </li>
