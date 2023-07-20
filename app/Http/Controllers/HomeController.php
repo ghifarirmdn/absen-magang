@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\Models\User;
 
 use App\Models\Presence;
-use App\Models\User;
+use App\Models\Permission;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -20,7 +21,9 @@ class HomeController extends Controller
                 ->where('date', $date)
                 ->first();
 
-            return view('user.home', compact('presences', 'presence_today'));
+            $permission = Permission::where('user_id', Auth::id())->first();
+
+            return view('user.home', compact('presences', 'presence_today', 'permission'));
         } else {
             $presences = Presence::all();
 

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PerformanceController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\UserController;
 
@@ -51,3 +52,6 @@ Route::post('/user/store', [UserController::class, 'store'])->name('store_user')
 Route::get('/user/{user}', [UserController::class, 'show'])->name('show_user');
 Route::patch('/user/{user}/update', [UserController::class, 'update'])->name('update_user');
 Route::delete('/user/{user}/delete', [UserController::class, 'delete'])->name('delete_user');
+
+// Permission Route
+Route::post('/permission', [PermissionController::class, 'store'])->name('store_permission');
