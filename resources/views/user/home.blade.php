@@ -8,16 +8,16 @@
         @if (!isset($permission))
             @if (!isset($presence_today->in))
                 <button type="button" onclick="location.href='{{ route('create_presence') }}'"
-                    class="text-white bg-green-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Presensi
+                    class="text-white bg-green-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 mb-3 text-center">Presensi
                     Masuk</button>
                 <button data-modal-target="defaultModal" data-modal-toggle="defaultModal"
-                    class="block text-white bg-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                    class="block text-white bg-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-3 text-center"
                     type="button">
                     Izin
                 </button>
             @elseif(!isset($presence_today->out))
                 <button type="button" onclick="location.href='{{ route('edit_presence', $presence_today) }}'"
-                    class="text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Presensi
+                    class="text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm px-5 py-2.5 mb-3 text-center">Presensi
                     Keluar</button>
             @endif
         @endif
