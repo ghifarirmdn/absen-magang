@@ -46,7 +46,6 @@ Route::get('/presence/export', [PresenceController::class, 'exportExcel'])->name
 Route::get('/presence/recap', [PresenceController::class, 'recap'])->name('recap_presence');
 
 // Users Route
-Route::get('/users', [UserController::class, 'index'])->name('users');
 Route::get('/user/create', [UserController::class, 'create'])->name('create_user');
 Route::post('/user/store', [UserController::class, 'store'])->name('store_user');
 Route::get('/user/{user}', [UserController::class, 'show'])->name('show_user');

@@ -26,8 +26,11 @@ class HomeController extends Controller
             return view('user.home', compact('presences', 'presence_today', 'permission'));
         } else {
             $presences = Presence::all();
-
-            return view('admin.home', compact('presences'));
+            $users = User::where('is_admin', false)->get();
+            $total_user = User::all()->count();
+            $total_presence = Presence::all()->count();
+            
+            return view('admin.home', compact('presences', 'users', 'total_user', 'total_presence'));
         }
     }
 }
