@@ -58,7 +58,7 @@
                                             Internship
                                         </div>
                                     </td>
-                                    <td class="px-6 py-2 flex gap-2 border-gray-200">
+                                    <td class="px-6 py-2 flex gap-3 border-gray-200">
                                         <a href="{{ route('show_user', $user) }}"
                                             class="text-green-600 hover:text-green-800"><i
                                                 class="fa-solid fa-pen-to-square"></i></a>
