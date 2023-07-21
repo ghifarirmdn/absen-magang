@@ -108,6 +108,10 @@
                                 class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                 Total Hours
                             </th>
+                            <th
+                                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                Description
+                            </th>
                         </tr>
                     </thead>
 
@@ -141,6 +145,23 @@
                                     <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
                                         <div class="text-sm leading-5 text-gray-900">
                                             {{ $presence->total_hours }} Hours
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
+                                        <div class="text-sm leading-5 text-gray-900">
+                                            @if (isset($presence->is_on_time))
+                                                @if ($presence->is_on_time)
+                                                    <span
+                                                        class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">Tepat
+                                                        Waktu</span>
+                                                @else
+                                                    <span
+                                                        class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">Terlambat</span>
+                                                @endif
+                                            @else
+                                                <span
+                                                    class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Tidak Hadir</span>
+                                            @endif
                                         </div>
                                     </td>
                                 </tr>

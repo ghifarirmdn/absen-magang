@@ -8,6 +8,7 @@ use DateTimeZone;
 
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Office;
 use App\Models\Presence;
 use App\Traits\TakePhoto;
 use Illuminate\Http\Request;
@@ -35,11 +36,17 @@ class PresenceController extends Controller
     public function store(Request $request)
     {
         $user = User::where('id', Auth::id())->first();
+        $data = Office::where('user_id', Auth::id())->first();
 
         $timezone = 'Asia/Jakarta';
         $date_time = new DateTime('now', new DateTimeZone($timezone));
         $date = $date_time->format('Y-m-d');
         $time = $date_time->format('H:i:s');
+
+        $on_time = false;
+
+        if($time <= '08:00:00')
+            $on_time = true;
 
         $photo = $this->takePicture($request->photo);
         $presence = new Presence([
@@ -47,7 +54,8 @@ class PresenceController extends Controller
             'status' => $request->status,
             'date' => $date,
             'in' => $time,
-            'photo' => $photo
+            'photo' => $photo,
+            'is_on_time' => $on_time
         ]);
 
         $presence->save();
