@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Office;
+use App\Models\Performance;
 use App\Models\Presence;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -42,6 +43,10 @@ class UserController extends Controller
             'holidays' => $request->holidays,
         ]);
 
+        Performance::create([
+            'user_id' => $user->id
+        ]);
+
         return redirect()->route('home');
     }
 
@@ -57,11 +62,10 @@ class UserController extends Controller
         return redirect()->route('users');
     }
 
-    public function delete($id)
+    public function delete(User $user)
     {
-        $data = User::find($id);
-        $data->delete();
+        $user->delete();
 
-        return redirect()->route('users');
+        return redirect()->route('home');
     }
 }

@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Office;
 use App\Models\Presence;
 use App\Traits\TakePhoto;
+use App\Models\Performance;
 use Illuminate\Http\Request;
 use App\Exports\PresenceExport;
 use Illuminate\Support\Facades\Auth;
@@ -45,7 +46,7 @@ class PresenceController extends Controller
 
         $on_time = false;
 
-        if($time <= '08:00:00')
+        if ($time <= '08:00:00')
             $on_time = true;
 
         $photo = $this->takePicture($request->photo);
@@ -70,6 +71,9 @@ class PresenceController extends Controller
 
     public function update(Presence $presence)
     {
+        $performance = Performance::where('user_id', $presence->user_id)->first();
+        $total_presence = $performance->total_presence;
+
         $timezone = 'Asia/Jakarta';
         $date_time = new DateTime('now', new DateTimeZone($timezone));
         $time = $date_time->format('H:i:s');
@@ -83,6 +87,12 @@ class PresenceController extends Controller
         $presence->update([
             'out' => $time,
             'total_hours' => $total_hours
+        ]);
+
+        $total_presence += 1;
+
+        $performance->update([
+            'total_presence' => $total_presence
         ]);
 
         return redirect()->route('home');

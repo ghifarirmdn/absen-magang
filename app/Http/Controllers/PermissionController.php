@@ -7,6 +7,7 @@ use DateTimeZone;
 use App\Models\User;
 use App\Models\Presence;
 use App\Models\Permission;
+use App\Models\Performance;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -16,6 +17,8 @@ class PermissionController extends Controller
     public function store(Request $request)
     {
         $user = User::where('id', Auth::id())->first();
+        $performance = Performance::where('user_id', $user->id)->first();
+        $total_permit = $performance->total_permit;
 
         $timezone = 'Asia/Jakarta';
         $date_time = new DateTime('now', new DateTimeZone($timezone));
@@ -38,6 +41,12 @@ class PermissionController extends Controller
             'total_hours' => '0',
             'status' => $request->category,
             'photo' => $path
+        ]);
+
+        $total_permit += 1;
+
+        $performance->update([
+            'total_permit' => $total_permit
         ]);
 
         return redirect()->route('home');

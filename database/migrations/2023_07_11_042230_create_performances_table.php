@@ -14,10 +14,8 @@ return new class extends Migration
         Schema::create('performances', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('office_id')->constrained('offices')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('presence_id')->constrained('presences')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->integer('total_presence')->nullable();
-            $table->integer('total_permit')->nullable();
+            $table->integer('total_presence')->default(0);
+            $table->integer('total_permit')->default(0);
             $table->time('recap_hours')->nullable();
             $table->timestamps();
         });

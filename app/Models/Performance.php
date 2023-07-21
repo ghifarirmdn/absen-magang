@@ -14,8 +14,6 @@ class Performance extends Model
 
     protected $fillable = [
         'user_id',
-        'office_id',
-        'presence_id',
         'total_presence',
         'total_permit',
         'recap_hours',
@@ -25,15 +23,4 @@ class Performance extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    public function presence()
-    {
-        return $this->belongsTo(Presence::class);
-    }
-
-    public function office()
-    {
-        return $this->belongsTo(Office::class);
-    }
-
 }

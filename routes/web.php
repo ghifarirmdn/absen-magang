@@ -29,9 +29,6 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Home Route
 Route::get('/home', [HomeController::class, 'home'])->name('home');
-Route::get('/performance', function () {
-    return view('user.performance');
-})->name('performance');
 
 Route::get('/change-password', function () {
     return view('user.change_password');
@@ -54,3 +51,6 @@ Route::delete('/user/{user}/delete', [UserController::class, 'delete'])->name('d
 
 // Permission Route
 Route::post('/permission', [PermissionController::class, 'store'])->name('store_permission');
+
+// Performance Route
+Route::get('/performance', [PerformanceController::class, 'index'])->name('performance');
