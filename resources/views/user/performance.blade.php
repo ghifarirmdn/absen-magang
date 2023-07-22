@@ -27,10 +27,10 @@
         }
     </style>
 
-    <h3 class="text-black font-bold text-2xl capitalize 2xl:text-3xl"><span class="text-orange-400">Performa</span> Kamu bulan
+    <h3 class="text-gray-700 text-3xl font-medium capitalize"><span class="text-orange-400">Performa</span> Kamu Saat
         Ini!</h3>
 
-    <div class="p-5 bg-white border border-gray-200 rounded-lg shadow mt-20">
+    <div class="p-5 bg-white border border-gray-200 rounded-lg shadow mt-8">
         <div class="performance flex flex-col lg:flex-row-reverse lg:justify-between">
 
             <div class="circular-progress">
@@ -40,7 +40,7 @@
             <div class="performance-text">
                 <div class="work-day">
                     <div class="mounth">
-                        <h4 class="font-bold text-xl text-orange-400">Juli</h4>
+                        <h4 class="font-bold text-xl text-orange-400">{{ $bulan_ini }}</h4>
                     </div>
                     <div class="grid grid-cols-2">
                         <div class="performance-left">
@@ -57,9 +57,9 @@
                 </div>
 
                 <h4 class="text-sm my-8 lg:text-lg">
-                    Selama Bulan Juli Kamu Telah Bekerja dengan Durasi <b>:</b> <br>
-                    <span class="text-orange-400 font-bold text-md">24 Jam</span>
-                    <span class="text-orange-400 font-bold text-md">25 Menit</span>
+                    Sampai Bulan Ini Kamu Telah Bekerja dengan Durasi <b>:</b> <br>
+                    <span class="text-orange-400 font-bold text-md">{{ $total_jam }} Jam</span>
+                    {{-- <span class="text-orange-400 font-bold text-md">25 Menit</span> --}}
                 </h4>
 
                 <div class="result-month">

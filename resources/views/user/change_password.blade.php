@@ -2,7 +2,7 @@
 @section('container')
     <h3 class="text-black font-bold text-2xl capitalize 2xl:text-3xl">Ganti Password</h3>
 
-    <div class="p-5 bg-white border border-gray-200 rounded-lg shadow mt-10">
+    <div class="p-5 bg-white border border-gray-200 rounded-lg shadow mt-8">
         <form action="" method="post">
             @csrf
             <div class="mb-6">
@@ -25,7 +25,7 @@
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5"
                     placeholder="Konfirmasi Password Baru" required>
             </div>
-            
+
             <div class="flex justify-end">
                 <button type="submit" class="bg-orange-400 text-white rounded-md p-2 hover:bg-orange-500 ">Submit</button>
             </div>

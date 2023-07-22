@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Presence;
 use App\Models\Performance;
 use Illuminate\Http\Request;
@@ -20,8 +21,11 @@ class PerformanceController extends Controller
         $presence = Presence::where('user_id', Auth::id())->first();
         $tepat_waktu = $presence->where('is_on_time', true)->count();
         $terlambat = $presence->where('is_on_time', false)->count();
+        $total_jam = $presence->sum('total_hours');
 
-        return view('user.performance', compact('performance', 'total_hari', 'tepat_waktu', 'terlambat'));
+        $bulan_ini = Carbon::now()->isoFormat('MMMM');
+
+        return view('user.performance', compact('performance', 'total_hari', 'tepat_waktu', 'terlambat', 'total_jam', 'bulan_ini'));
     }
 
     /**
