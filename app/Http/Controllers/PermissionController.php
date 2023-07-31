@@ -33,6 +33,7 @@ class PermissionController extends Controller
             'user_id' => $user->id,
             'category' => $request->category,
             'permission_letter' => $path,
+            'date' => $date
         ]);
 
         Presence::create([

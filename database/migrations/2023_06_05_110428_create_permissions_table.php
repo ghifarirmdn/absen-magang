@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('category');
             $table->string('permission_letter');
+            $table->date('date')->nullable();
             $table->timestamps();
         });
     }

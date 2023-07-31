@@ -5,6 +5,7 @@
                 class="text-orange-400">{{ Auth::user()->name }}</span></h3>
     </div>
     <div class="mt-8 flex justify-end gap-2">
+
         @if (!isset($permission))
             @if (!isset($presence_today->in))
                 <button type="button" onclick="location.href='{{ route('create_presence') }}'"
@@ -15,7 +16,7 @@
                     type="button">
                     Izin
                 </button>
-            @elseif(!isset($presence_today->out))
+            @else
                 <button type="button" onclick="location.href='{{ route('edit_presence', $presence_today) }}'"
                     class="text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm px-5 py-2.5 mb-3 text-center">Presensi
                     Keluar</button>
@@ -123,10 +124,10 @@
                                         {{ $loop->iteration }}
                                     </td>
                                     <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
-                                        {{ date('d-m-Y', strtotime($presence->date)) }}
+                                        {{ date('d-m-Y', strtotime($permission->date)) }}
                                     </td>
                                     <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
-                                        {{ $presence->status }}
+                                        {{ $permission->category }}
                                     </td>
                                     <td class="px-6 py-2 whitespace-no-wrap border-b border-gray-200">
                                         <div class="grid grid-rows-2 gap-2">
@@ -160,7 +161,8 @@
                                                 @endif
                                             @else
                                                 <span
-                                                    class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Tidak Hadir</span>
+                                                    class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Tidak
+                                                    Hadir</span>
                                             @endif
                                         </div>
                                     </td>

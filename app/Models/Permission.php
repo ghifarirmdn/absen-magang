@@ -13,7 +13,8 @@ class Permission extends Model
     protected $fillable = [
         'user_id',
         'category',
-        'permission_letter'
+        'permission_letter',
+        'date',
     ];
 
     public function user()

@@ -21,7 +21,9 @@ class HomeController extends Controller
                 ->where('date', $date)
                 ->first();
 
-            $permission = Permission::where('user_id', Auth::id())->first();
+            $permission = Permission::where('user_id', Auth::id())
+                ->where('date', $date)
+                ->first();
 
             return view('user.home', compact('presences', 'presence_today', 'permission'));
         } else {
@@ -29,7 +31,7 @@ class HomeController extends Controller
             $users = User::where('is_admin', false)->get();
             $total_user = User::all()->count();
             $total_presence = Presence::all()->count();
-            
+
             return view('admin.home', compact('presences', 'users', 'total_user', 'total_presence'));
         }
     }
