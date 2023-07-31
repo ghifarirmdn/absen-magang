@@ -41,6 +41,7 @@ Route::get('/presence/{presence}/edit', [PresenceController::class, 'edit'])->na
 Route::patch('/presence/{presence}/update', [PresenceController::class, 'update'])->name('update_presence');
 Route::get('/presence/export', [PresenceController::class, 'exportExcel'])->name('export_excel');
 Route::get('/presence/recap', [PresenceController::class, 'recap'])->name('recap_presence');
+Route::get('/presence/filter', [PresenceController::class, 'recap'])->name('filter_presence');
 
 // Users Route
 Route::get('/user/create', [UserController::class, 'create'])->name('create_user');

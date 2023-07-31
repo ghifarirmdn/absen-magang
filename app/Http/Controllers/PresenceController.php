@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Phar;
 use DateTime;
 use DateTimeZone;
 
@@ -14,8 +13,11 @@ use App\Traits\TakePhoto;
 use App\Models\Performance;
 use Illuminate\Http\Request;
 use App\Exports\PresenceExport;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 
 class PresenceController extends Controller
 {
@@ -103,10 +105,19 @@ class PresenceController extends Controller
         return Excel::download(new PresenceExport, 'presence.xlsx');
     }
 
-    public function recap()
+    public function recap(Request $request)
     {
-        $presences = Presence::all();
+        $presences = Presence::all()
+            ->when(
+                $request->start && $request->end,
+                function (Collection $collection) use ($request) {
+                    $collection->whereBetween(
+                        $request->start,
+                        $request->end,
+                    );
+                }
+            );
 
-        return view('admin.presence_recap', compact('presences'));
+        return view('admin.presence_recap', compact('presences', 'request'));
     }
 }
